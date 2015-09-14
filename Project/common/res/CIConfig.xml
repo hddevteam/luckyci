@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <preferences>
+    <UpdateInterval>1</UpdateInterval>
+    <SvnPath>C:\Program Files\TortoiseSVN\bin\svn.exe</SvnPath>
+    <StandarOutput>false</StandarOutput>
+    <ServiceSwitch>window</ServiceSwitch>
+  </preferences>
+</config>

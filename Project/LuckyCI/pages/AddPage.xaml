@@ -1,0 +1,271 @@
+﻿<Page x:Class="LuckyCI.pages.AddPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="420" d:DesignWidth="640"
+	Title="AddPage">
+
+    <Grid>
+        <GroupBox  Header="Add Project">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="110"/>
+                    </Grid.RowDefinitions>
+                    <GroupBox Grid.Row="0" Header="Log">
+                        <TextBox IsReadOnly="True" Name="logs" Padding="10" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"/>
+                    </GroupBox>
+                    <GroupBox Grid.Row="1" Header="Result" Padding="10">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Last CI Result:</TextBlock>
+                                <TextBlock Foreground="Blue" FontWeight="Bold" Name="lastRe"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Check Result:</TextBlock>
+                                <TextBlock Foreground="Blue" FontWeight="Bold" Name="currentRe" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Build Result:</TextBlock>
+                                <TextBlock Foreground="Blue" FontWeight="Bold" Name="buildRe" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Send Result:</TextBlock>
+                                <TextBlock Foreground="Blue" FontWeight="Bold" Name="sendRe"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <GroupBox Grid.Row="0" Header="Options">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="50" />
+                            </Grid.RowDefinitions>
+
+                            <ScrollViewer Grid.Row="0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="4*" MinHeight="150"/>
+                                        <RowDefinition Height="2*" MinHeight="40"/>
+                                        <RowDefinition Height="2*" MinHeight="180"/>
+                                        <RowDefinition Height="2*" MinHeight="180"/>
+                                    </Grid.RowDefinitions>
+                                    <GroupBox Header="Svn" Grid.Row="0">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid Grid.Row="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="135"/>
+                                                    <ColumnDefinition Width="250*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock FontSize="12" Grid.Column="0" VerticalAlignment="Center">Project Name:</TextBlock>
+                                                <TextBox Name="projectName" Grid.Column="1" Height="25" VerticalContentAlignment="Center"/>
+                                            </Grid>
+                                            <Grid Grid.Row="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="135"/>
+                                                    <ColumnDefinition Width="250*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock FontSize="12" Grid.Column="0" VerticalAlignment="Center">Repository Path:</TextBlock>
+                                                <TextBox Name="respoPath" Grid.Column="1" Height="25" VerticalContentAlignment="Center"/>
+                                            </Grid>
+                                            <Grid Grid.Row="2">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="135"/>
+                                                    <ColumnDefinition Width="250*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock FontSize="12" Grid.Column="0" VerticalAlignment="Center">Working Directory:</TextBlock>
+                                                <TextBox Name="Workspace" Grid.Column="1" Height="25" VerticalContentAlignment="Center"/>
+                                            </Grid>
+                                            <Grid Grid.Row="3">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="135"/>
+                                                    <ColumnDefinition Width="250*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock FontSize="12" Grid.Column="0" VerticalAlignment="Center">Force overwrite</TextBlock>
+                                                <CheckBox Name="check" Grid.Column="1" VerticalAlignment="Center"/>
+                                            </Grid>
+                                        </Grid>
+                                    </GroupBox>
+                                    <GroupBox Header="Build" Grid.Row="1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="135"/>
+                                                <ColumnDefinition Width="250*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock FontSize="12" Grid.Column="0" VerticalAlignment="Center">Build Comand:</TextBlock>
+                                            <TextBox  Name="Buildcomand" Height="25" Grid.Column="1" VerticalContentAlignment="Center"/>
+                                        </Grid>
+                                    </GroupBox>
+                                    <GroupBox Header="Mail" Grid.Row="2">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid Grid.Row="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="135"/>
+                                                    <ColumnDefinition Width="250*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock FontSize="12" Grid.Column="0" VerticalAlignment="Center">Username:</TextBlock>
+                                                <TextBox x:Name="Username" Grid.Column="1" Height="25" VerticalContentAlignment="Center">
+                                                    #author#@domain.com
+                                                </TextBox>
+                                            </Grid>
+                                            <Grid Grid.Row="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="135"/>
+                                                    <ColumnDefinition Width="250*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock FontSize="12" Grid.Column="0" VerticalAlignment="Center">Password:</TextBlock>
+                                                <TextBox Name="Password" Grid.Column="1" Height="25" VerticalContentAlignment="Center"/>
+                                            </Grid>
+                                            <Grid Grid.Row="2">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="135"/>
+                                                    <ColumnDefinition Width="250*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock FontSize="12" Grid.Column="0" VerticalAlignment="Center">Mail To:</TextBlock>
+                                                <TextBox Name="Mailto" Grid.Column="1" Height="25" VerticalContentAlignment="Center"/>
+                                            </Grid>
+                                            <Grid Grid.Row="3">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="135"/>
+                                                    <ColumnDefinition Width="250*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock FontSize="12" Grid.Column="0" VerticalAlignment="Center">Mail Host:</TextBlock>
+                                                <TextBox Name="Host" Grid.Column="1" Height="25" VerticalContentAlignment="Center"/>
+                                            </Grid>
+                                            <Grid Grid.Row="4">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="135"/>
+                                                    <ColumnDefinition Width="250*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock FontSize="12" Grid.Column="0" VerticalAlignment="Center">Enable Notification:</TextBlock>
+                                                <CheckBox Name="CheckMail" Grid.Column="1" VerticalAlignment="Center"/>
+                                            </Grid>
+                                        </Grid>
+                                    </GroupBox>
+                                    <GroupBox Header="Slack" Grid.Row="3">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid Grid.Row="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="135"/>
+                                                    <ColumnDefinition Width="250*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock FontSize="12" Grid.Column="0" VerticalAlignment="Center">SlackUrl:</TextBlock>
+                                                <TextBox Name="SlackUrl" Height="25" Grid.Column="1" VerticalContentAlignment="Center"/>
+                                            </Grid>
+                                            <Grid Grid.Row="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="135"/>
+                                                    <ColumnDefinition Width="250*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock FontSize="12" Grid.Column="0" VerticalAlignment="Center">Slack Channel:</TextBlock>
+                                                <TextBox Name="SlackChannel"  Height="25" Grid.Column="1" VerticalContentAlignment="Center"/>
+                                            </Grid>
+                                            <Grid Grid.Row="2">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="135"/>
+                                                    <ColumnDefinition Width="250*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock FontSize="12" Grid.Column="0" VerticalAlignment="Center">UserName:</TextBlock>
+                                                <TextBox Name="SLackUser" Grid.Column="1" Height="25" VerticalContentAlignment="Center">
+                                                    #author#
+                                                </TextBox>
+                                            </Grid>
+                                            <Grid Grid.Row="3">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="35"/>
+                                                    <ColumnDefinition Width="250*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock FontSize="12" Grid.Column="0" VerticalAlignment="Center">
+                                                    Slack Content:
+                                                </TextBlock>
+                                                <Image Name="quesMark" VerticalAlignment="Center" Source="../images/ques_mark.png" Height="20" Width="20" Grid.Column="1" AllowDrop="True" ToolTip=""></Image>
+                                                <TextBox Name="SlackContent" Grid.Column="2" Height="25" VerticalContentAlignment="Center">
+                                                    #smile:smiling_imp#projectName#revision versionNum#build successful:build failed#
+                                                </TextBox>
+                                            </Grid>
+                                            <Grid Grid.Row="4">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="135"/>
+                                                    <ColumnDefinition Width="250*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock FontSize="12" Grid.Column="0" VerticalAlignment="Center">Enable Notification:</TextBlock>
+                                                <CheckBox Name="CheckSlack" Grid.Column="1" VerticalAlignment="Center"/>
+                                            </Grid>
+                                        </Grid>
+                                    </GroupBox>
+                                </Grid>
+                            </ScrollViewer>
+
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" Height="25" Width="68" Click="btnSave_Click" Padding="5 0" Background="#fff" Margin="0,10,0,15">Save</Button>
+                                <Button Grid.Column="1" Height="25" Width="68" Click="btnCancle_Click" Padding="5 0"  Background="#fff" Margin="0,10,0,15">Cancel</Button>
+                                <Button Grid.Column="2" Height="25" Width="68" Click="btnActive_Click" Padding="5 0"  Background="#fff" Margin="0,10,0,15">Active</Button>
+                                <Button Grid.Column="3" Height="25" Width="68" Click="btnClose_Click" Padding="5 0"  Background="#fff" Margin="0,10,0,15">Close</Button>
+                                <Button Grid.Column="4" Height="25" Width="68" Click="btnDelete_Click" Padding="5 0"  Background="#fff" Margin="0,10,0,15" Name="BtnDelete">Delete</Button>
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+
+                    <GroupBox Grid.Row="1" Header="Test">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition  Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" Width="68"  Height="25" Click="btnCheck_Click" Padding="5 0"  Background="#fff">Checkout</Button>
+                            <Button Grid.Column="1"  Width="68" Height="25" Click="btnUpdate_Click" Padding="5 0"  Background="#fff">Update</Button>
+                            <Button Grid.Column="2"  Width="68" Height="25" Click="btnBuild_Click" Padding="5 0"  Background="#fff">Build</Button>
+                            <Button Grid.Column="3"  Width="68" Height="25" Padding="5 0" Click="btnSendMail_Click"  Background="#fff">Send log</Button>
+                            <Button Grid.Column="4" Width="68"  Height="25" Name="runProject" Padding="5 0"  Background="#fff">Run</Button>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</Page>
