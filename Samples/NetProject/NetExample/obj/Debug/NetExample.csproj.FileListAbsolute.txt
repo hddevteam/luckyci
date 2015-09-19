@@ -1,0 +1,14 @@
+C:\Users\ccy_god\Desktop\NetExample\NetExample\bin\Debug\NetExample.exe.config
+C:\Users\ccy_god\Desktop\NetExample\NetExample\bin\Debug\NetExample.exe
+C:\Users\ccy_god\Desktop\NetExample\NetExample\bin\Debug\NetExample.pdb
+C:\Users\ccy_god\Desktop\NetExample\NetExample\obj\Debug\NetExample.csprojResolveAssemblyReference.cache
+C:\Users\ccy_god\Desktop\NetExample\NetExample\obj\Debug\MainWindow.g.cs
+C:\Users\ccy_god\Desktop\NetExample\NetExample\obj\Debug\App.g.cs
+C:\Users\ccy_god\Desktop\NetExample\NetExample\obj\Debug\NetExample_MarkupCompile.cache
+C:\Users\ccy_god\Desktop\NetExample\NetExample\obj\Debug\NetExample_MarkupCompile.lref
+C:\Users\ccy_god\Desktop\NetExample\NetExample\obj\Debug\MainWindow.baml
+C:\Users\ccy_god\Desktop\NetExample\NetExample\obj\Debug\NetExample.g.resources
+C:\Users\ccy_god\Desktop\NetExample\NetExample\obj\Debug\NetExample.Properties.Resources.resources
+C:\Users\ccy_god\Desktop\NetExample\NetExample\obj\Debug\NetExample.csproj.GenerateResource.Cache
+C:\Users\ccy_god\Desktop\NetExample\NetExample\obj\Debug\NetExample.exe
+C:\Users\ccy_god\Desktop\NetExample\NetExample\obj\Debug\NetExample.pdb
