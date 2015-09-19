@@ -1,7 +1,7 @@
 **LuckyCI**
 ===================
 
-LuckyCI是运行在Windows平台上的持续集成工具(CI)。可以对SVN版本库上的Android Studio, Apache Cordova, .NET项目进行监控并持续集成（Build）。集成结果可以通过**邮件**或**Slack**自动发送给团队成员，从而时刻确保项目完整性，减少由于错误提交产生的排错内耗，让开发过程更加高效。
+LuckyCI是运行在Windows平台上的持续集成工具(CI)。可以对SVN版本库上的gradle项目，如Android Studio、 Apache Cordova,以及 .NET项目进行监控并持续集成（Build）。集成结果可以通过**邮件**或**Slack**自动发送给团队成员，从而时刻确保项目完整性，减少由于错误提交产生的排错内耗，让开发过程更加高效。
 
 功能简介
 -------------
