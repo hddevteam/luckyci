@@ -1,0 +1,56 @@
+﻿<Page x:Class="LuckyCI.pages.AllProjectsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="440" d:DesignWidth="640"
+	Title="AllProjectsPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox  Grid.Column="0" Header="Detailed Logs">
+            <TextBox Name="AllLog" IsReadOnly="True" Padding="12" Margin="5" VerticalScrollBarVisibility="Visible"/>
+        </GroupBox>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="140"/>
+            </Grid.RowDefinitions>
+            <GroupBox Header="Project List" Grid.Row="0">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                    <ListView Name="ListView" LostMouseCapture="ListView_OnLostMouseCapture" />
+                </ScrollViewer>                
+            </GroupBox>
+            <GroupBox Header="LuckyCI Service" Grid.Row="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Name="StatusFlag" Width="12" Height="12" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                            <Label Name="ServiceStatus" FontSize="12" VerticalAlignment="Center"/>
+                        </StackPanel>
+                     </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Content="run" Name="butOn" Grid.Column="0" Click="btnOn_Click" Height="25"/>
+                        <Button Content="stop" Name="butOff" Grid.Column="1" Click="btnOff_Click" Height="25"/>
+                        <Button Content="reset" Name="butReset" Grid.Column="2" Height="25"/>
+                    </Grid>
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </Grid>
+</Page>

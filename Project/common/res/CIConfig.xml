@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <preferences>
+    <UpdateInterval>1</UpdateInterval>
+    <SvnPath>C:\Program Files\TortoiseSVN\bin\svn.exe</SvnPath>
+    <StandarOutput>false</StandarOutput>
+    <ServiceSwitch>service</ServiceSwitch>
+  </preferences>
+  <Projects Name="CordovaProject" Status="true">
+    <RepositoryPath>http://domain/svn/cordova</RepositoryPath>
+    <WorkingDirectory>C:\Users\Admin\Desktop\LuckyCI\Samples\Cordova_Project</WorkingDirectory>
+    <MailTo>example@gmail.com</MailTo>
+    <BuildCommand>cordova build android</BuildCommand>
+    <IfSlack>false</IfSlack>
+    <IfMail>false</IfMail>
+    <SlackUrl>https://hooks.slack.com/services/example</SlackUrl>
+    <SlackChannel>#example</SlackChannel>
+    <MailHost>smtp.gmail.com</MailHost>
+    <UserName>#example#@example.com</UserName>
+    <Password></Password>
+    <SlackUser>#example#</SlackUser>
+    <SlackContent>#smile:smiling_imp#projectName#revision versionNum#build successful:build failed#</SlackContent>
+  </Projects>
+  <Projects Name="AndroidProject" Status="true">
+    <RepositoryPath>http://domain/svn/androidstudio</RepositoryPath>
+    <WorkingDirectory>C:\Users\Admin\Desktop\LuckyCI\Samples\AndroidStudio_Project</WorkingDirectory>
+    <MailTo>example@gmail.com</MailTo>
+    <BuildCommand>gradlew :app:clean :app:assembleDebug</BuildCommand>
+    <IfSlack>false</IfSlack>
+    <IfMail>false</IfMail>
+    <SlackUrl>https://hooks.slack.com/services/example</SlackUrl>
+    <SlackChannel>#example</SlackChannel>
+    <MailHost>smtp.gmail.com</MailHost>
+    <UserName>#example#@example.com</UserName>
+    <Password></Password>
+    <SlackUser>#author#</SlackUser>
+    <SlackContent>#smile:smiling_imp#projectName#revision versionNum#build successful:build failed#</SlackContent>
+  </Projects>
+  <Projects Name="NetProject" Status="true">
+    <RepositoryPath>http://domain/svn/Net</RepositoryPath>
+    <WorkingDirectory>C:\Users\Admin\Desktop\LuckyCI\Samples\VisualStudio_Project\ExampleApplication</WorkingDirectory>
+    <MailTo>example@gmail.com</MailTo>
+    <BuildCommand>C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild</BuildCommand>
+    <IfSlack>false</IfSlack>
+    <IfMail>false</IfMail>
+    <SlackUrl>https://hooks.slack.com/services/example</SlackUrl>
+    <SlackChannel>#example</SlackChannel>
+    <MailHost>smtp.gmail.com</MailHost>
+    <UserName>#example#@example.com</UserName>
+    <Password></Password>
+    <SlackUser>#example#</SlackUser>
+    <SlackContent>#smile:smiling_imp#projectName#revision versionNum#build successful:build failed#</SlackContent>
+  </Projects>
+</config>

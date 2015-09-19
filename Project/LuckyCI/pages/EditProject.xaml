@@ -1,0 +1,58 @@
+﻿<Window x:Class="LuckyCI.pages.EditProject"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Edit Project" Height="490" Width="640">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23"/>  
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="21"/>
+        </Grid.RowDefinitions>
+        <DockPanel  Grid.Row="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="All Projects" Name="All" Click="btnToAllProjects_Click"/>
+                </MenuItem>
+                <MenuItem Header="_View">
+                    <MenuItem Header="Add" Name="Add" Click="btnToAdd_Click"/>
+                </MenuItem>
+                <MenuItem Header="_Option">
+                    <MenuItem Header="Preferences" Name="Preferences" Click="btnToPreferences_Click"/>
+                </MenuItem>
+                <MenuItem Header="_Help">
+                    <MenuItem Header="Help Doc" Click="btnToHelp_Click"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <Frame NavigationUIVisibility="Hidden" Grid.Row="1" Name="FramePage" Source="./AllProjectsPage.xaml"/>
+        <StackPanel  Grid.Row="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  Width="*"/>
+                    <ColumnDefinition  Width="*"/>
+                    <ColumnDefinition  Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Margin="10,0,0,0" BorderBrush="Aquamarine" BorderThickness="1" Grid.Column="0">
+                    <StackPanel HorizontalAlignment="Center"  VerticalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock >Project:</TextBlock>
+                        <TextBlock Name="ProjectName" Margin="5 0 5 0"></TextBlock>
+                        <Image Name="ImgSource" Width="12" Height="12"/>
+                    </StackPanel>
+                </Border>
+                <Border  BorderBrush="Aquamarine" BorderThickness="1" Grid.Column="1">
+                    <StackPanel  HorizontalAlignment="Center"  VerticalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock  >Last Build Time:</TextBlock>
+                        <TextBlock  x:Name="Datetime"  ></TextBlock>
+                    </StackPanel>
+                </Border>
+                <Border BorderBrush="Aquamarine" BorderThickness="1" Grid.Column="2">
+                    <StackPanel  HorizontalAlignment="Center"  VerticalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock  >Last Build Duration:</TextBlock>
+                        <TextBlock Name="BuildDuration"  ></TextBlock>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>

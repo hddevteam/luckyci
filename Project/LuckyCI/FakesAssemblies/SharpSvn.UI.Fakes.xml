@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SharpSvn.UI.Fakes</name>
+    </assembly>
+    <members>
+        <member name="T:SharpSvn.UI.Fakes.ShimSvnUI">
+            <summary>SharpSvn.UI.SvnUI 的填充码类型</summary>
+        </member>
+        <member name="M:SharpSvn.UI.Fakes.ShimSvnUI.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:SharpSvn.UI.Fakes.ShimSvnUI.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:SharpSvn.UI.Fakes.ShimSvnUI.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUI.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUI.BindSvnClientIWin32Window">
+            <summary>设置 SvnUI.Bind(SvnClient client, IWin32Window parentWindow) 的 填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUI.BindSvnClientSvnUIBindArgs">
+            <summary>设置 SvnUI.Bind(SvnClient client, SvnUIBindArgs args) 的 填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUI.BindSvnRemoteSessionIWin32Window">
+            <summary>设置 SvnUI.Bind(SvnRemoteSession client, IWin32Window parentWindow) 的 填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUI.BindSvnRemoteSessionSvnUIBindArgs">
+            <summary>设置 SvnUI.Bind(SvnRemoteSession client, SvnUIBindArgs args) 的 填充码</summary>
+        </member>
+        <member name="T:SharpSvn.UI.Fakes.ShimSvnUIBindArgs">
+            <summary>SharpSvn.UI.SvnUIBindArgs 的填充码类型</summary>
+        </member>
+        <member name="M:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.#ctor(SharpSvn.UI.SvnUIBindArgs)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.AutoScaleBaseSizeGet">
+            <summary>设置 SvnUIBindArgs.get_AutoScaleBaseSize() 的 填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.AutoScaleBaseSizeSetSize">
+            <summary>设置 SvnUIBindArgs.set_AutoScaleBaseSize(Size value) 的 填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.Constructor">
+            <summary>设置 SvnUIBindArgs.SvnUIBindArgs() 的 填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.HeaderImageGet">
+            <summary>设置 SvnUIBindArgs.get_HeaderImage() 的 填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.HeaderImageSetImage">
+            <summary>设置 SvnUIBindArgs.set_HeaderImage(Image value) 的 填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.ParentWindowGet">
+            <summary>设置 SvnUIBindArgs.get_ParentWindow() 的 填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.ParentWindowSetIWin32Window">
+            <summary>设置 SvnUIBindArgs.set_ParentWindow(IWin32Window value) 的 填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.SynchronizerGet">
+            <summary>设置 SvnUIBindArgs.get_Synchronizer() 的 填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.SynchronizerSetISynchronizeInvoke">
+            <summary>设置 SvnUIBindArgs.set_Synchronizer(ISynchronizeInvoke value) 的 填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.UIServiceGet">
+            <summary>设置 SvnUIBindArgs.get_UIService() 的 填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.UIServiceSetIUIService">
+            <summary>设置 SvnUIBindArgs.set_UIService(IUIService value) 的 填充码</summary>
+        </member>
+        <member name="T:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.AllInstances.AutoScaleBaseSizeGet">
+            <summary>设置 SvnUIBindArgs.get_AutoScaleBaseSize() 的 填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.AllInstances.AutoScaleBaseSizeSetSize">
+            <summary>设置 SvnUIBindArgs.set_AutoScaleBaseSize(Size value) 的 填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.AllInstances.HeaderImageGet">
+            <summary>设置 SvnUIBindArgs.get_HeaderImage() 的 填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.AllInstances.HeaderImageSetImage">
+            <summary>设置 SvnUIBindArgs.set_HeaderImage(Image value) 的 填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.AllInstances.ParentWindowGet">
+            <summary>设置 SvnUIBindArgs.get_ParentWindow() 的 填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.AllInstances.ParentWindowSetIWin32Window">
+            <summary>设置 SvnUIBindArgs.set_ParentWindow(IWin32Window value) 的 填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.AllInstances.SynchronizerGet">
+            <summary>设置 SvnUIBindArgs.get_Synchronizer() 的 填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.AllInstances.SynchronizerSetISynchronizeInvoke">
+            <summary>设置 SvnUIBindArgs.set_Synchronizer(ISynchronizeInvoke value) 的 填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.AllInstances.UIServiceGet">
+            <summary>设置 SvnUIBindArgs.get_UIService() 的 填充码</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.ShimSvnUIBindArgs.AllInstances.UIServiceSetIUIService">
+            <summary>设置 SvnUIBindArgs.set_UIService(IUIService value) 的 填充码</summary>
+        </member>
+        <member name="T:SharpSvn.UI.Fakes.StubSvnUIBindArgs">
+            <summary>SharpSvn.UI.SvnUIBindArgs 的存根类型</summary>
+        </member>
+        <member name="M:SharpSvn.UI.Fakes.StubSvnUIBindArgs.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:SharpSvn.UI.Fakes.StubSvnUIBindArgs.InitializeStub">
+            <summary>初始化 type StubSvnUIBindArgs 的新实例</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.StubSvnUIBindArgs.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.StubSvnUIBindArgs.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:SharpSvn.UI.Fakes.StubSvnUIBindArgs.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+    </members>
+</doc>
