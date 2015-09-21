@@ -37,7 +37,7 @@ LuckyCI中已经为用户添加了三个项目样例(.Net , Cordova , AndroidStu
 运行样图
 -------------
 
- 1. 项目运行以及Service状态查看(红色:运行失败,黄色:正在运行,绿色:成功)
+ 1. 项目运行以及Service状态查看(红色:运行失败,黄色:正在运行,绿色:运行成功)
    ![](https://raw.githubusercontent.com/hddevteam/luckyci/master/Screenshots/FilePage.png)
  2. 添加,修改等功能操作页面
    ![](https://raw.githubusercontent.com/hddevteam/luckyci/master/Screenshots/ViewPage.png)
