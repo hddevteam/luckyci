@@ -32,7 +32,6 @@ LuckyCI中已经为用户添加了三个项目样例(.Net , Cordova , AndroidStu
 #### <i class="icon-pencil"></i> 帮助文档
 
 点击<kbd>Help</kbd>查看帮助文档,解决一些在AndroidStudio出现的一些常见问题。
-<<<<<<< HEAD
 
 运行样图
 -------------
@@ -44,5 +43,4 @@ LuckyCI中已经为用户添加了三个项目样例(.Net , Cordova , AndroidStu
  3. LuckyCI软件的管理配置页面
    ![](https://raw.githubusercontent.com/hddevteam/luckyci/master/Screenshots/OptionPage.png)
    
-=======
->>>>>>> origin/master
+
