@@ -1,27 +1,27 @@
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.SvnUIForm 生成存根: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.SslClientCertificatePassPhraseDialog 生成存根: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.NativeMethods 生成存根: 类型已密封。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.ServerCertificateInfo 生成存根: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.SslClientCertificateFileDialog 生成存根: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.SslServerCertificateTrustDialog 生成存根: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.SharpSvnGui 生成存根: 类型已密封。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.UsernameDialog 生成存根: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.UsernamePasswordDialog 生成存根: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Properties.Resources 生成存根: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.SharpSvnUI 生成存根: 类型已密封。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Strings 生成存根: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.SvnClientUIHandler 生成存根: 类型已密封。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.SvnUI 生成存根: 类型已密封。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.SvnUIForm 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.SslClientCertificatePassPhraseDialog 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.NativeMethods 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.ServerCertificateInfo 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.SslClientCertificateFileDialog 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.SslServerCertificateTrustDialog 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.SharpSvnGui 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.UsernameDialog 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.UsernamePasswordDialog 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Properties.Resources 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.SharpSvnUI 生成填充码: 类型已过时。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Strings 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
-C:\Users\D.Y\Desktop\LuckyCI\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.SvnClientUIHandler 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.SvnUIForm 生成存根: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.SslClientCertificatePassPhraseDialog 生成存根: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.NativeMethods 生成存根: 类型已密封。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.ServerCertificateInfo 生成存根: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.SslClientCertificateFileDialog 生成存根: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.SslServerCertificateTrustDialog 生成存根: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.SharpSvnGui 生成存根: 类型已密封。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.UsernameDialog 生成存根: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.UsernamePasswordDialog 生成存根: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Properties.Resources 生成存根: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.SharpSvnUI 生成存根: 类型已密封。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Strings 生成存根: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.SvnClientUIHandler 生成存根: 类型已密封。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.SvnUI 生成存根: 类型已密封。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.SvnUIForm 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.SslClientCertificatePassPhraseDialog 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.NativeMethods 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.ServerCertificateInfo 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.SslClientCertificateFileDialog 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.SslServerCertificateTrustDialog 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.SharpSvnGui 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.UsernameDialog 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Authentication.UsernamePasswordDialog 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Properties.Resources 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.SharpSvnUI 生成填充码: 类型已过时。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.Strings 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
+C:\Users\D.Y\Desktop\lucky\Project\LuckyCI\Fakes\SharpSvn.UI.fakes : warning : 无法为 SharpSvn.UI.SvnClientUIHandler 生成填充码: 类型对 exported or assembly(SharpSvn.UI.Fakes) 不可见。
