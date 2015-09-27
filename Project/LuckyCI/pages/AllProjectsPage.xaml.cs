@@ -70,8 +70,9 @@ namespace LuckyCI.pages
             _projectInfos = projectController.ReadLog("/config/Projects", "../../../common/res/BuildResultLogs.xml");
             ProjectInfo lastestInfo = projectController.ProjectQuery("config/lastest", false,
                 "../../../common/res/LastestInfo.xml").First();
+            int index = 0;
             foreach (var projectInfo in _projectInfos)
-            {
+            {               
                 var flag = projectInfo.Result;
                 //如果是最近一次编译的项目,则以最近一次编译的结果为准
                 if (projectInfo.Nameproperty.Equals(lastestInfo.Nameproperty))
@@ -104,24 +105,23 @@ namespace LuckyCI.pages
                 img.Height = 12;
                 img.Source = new BitmapImage(new Uri(imageSource, UriKind.Relative));
                 img.Margin = new Thickness(2, 0, 5, 0);
-
                 tb.Text = projectInfo.Nameproperty;
-
                 tb.Height = 12;
                 stp.Orientation = Orientation.Horizontal;
                 var convertFromString = ColorConverter.ConvertFromString("#999");
                 if (convertFromString != null)
                     lvi.BorderBrush = new SolidColorBrush((Color)convertFromString);
-                lvi.BorderThickness = new Thickness(2, 0, 2, 2);
+                lvi.BorderThickness = index == 0 ? new Thickness(2, 2, 2, 2)
+                    : new Thickness(2, 0, 2, 2);
                 lvi.Height = 30;
                 var fromString = ColorConverter.ConvertFromString("#eee");
                 if (fromString != null)
                 lvi.Background = new SolidColorBrush((Color)fromString);   
-
                 stp.Children.Add(img);
                 stp.Children.Add(tb);
                 lvi.Content = stp;
                 ListView.Items.Add(lvi);
+                index++;
             }
         }
 

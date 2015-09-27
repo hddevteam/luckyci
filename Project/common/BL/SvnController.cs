@@ -11,6 +11,7 @@ using System.Windows;
 using common.DTO;
 using common.DAO;
 using System.Xml;
+using System.Collections.ObjectModel;
 
 namespace common.BL
 {
@@ -59,7 +60,7 @@ namespace common.BL
         /// <param name="svnPath">svn程序的路径</param>
         /// <param name="updateResult">更新操作的结果</param>
         /// <returns>返回更新操作的日志</returns>
-        public string Update(string workDirectory,out string updateResult,string xmlConfigPath)
+        public string Update(string workDirectory, out string updateResult, string xmlConfigPath)
         {
             string err;
             string time;
@@ -124,15 +125,20 @@ namespace common.BL
                 {
                     SvnInfoEventArgs clientInfo;
                     SvnPathTarget local = new SvnPathTarget(projectInfo.Workdirectory);
-                    svnClient.GetInfo(local, out clientInfo);
-                    //string revision =
-                    //    Regex.Match(string.Format("clientInfo revision of {0} is {1}", local, clientInfo.Revision),
-                    //        @"\d+").Value;
+                    svnClient.GetInfo(local, out clientInfo);                
                     string author = clientInfo.LastChangeAuthor;
-                    string changeTime = clientInfo.LastChangeTime.ToLocalTime().ToString();
+                    string revision = clientInfo.LastChangeRevision.ToString();                           
                     projectInfo.Author = author;
-                    //projectInfo.Revision = revision;
-                    //projectInfo.Changetime = changeTime;
+
+                    SvnLogArgs getLogMessage = new SvnLogArgs();
+                    Collection<SvnLogEventArgs> col;
+                    getLogMessage.Start = int.Parse(revision);
+                    getLogMessage.End = int.Parse(revision);
+                    bool gotLog = svnClient.GetLog(new Uri(projectInfo.Repositorypath),getLogMessage,out col);
+                    if (gotLog)
+                    {
+                        projectInfo.LogMessage = col[0].LogMessage;
+                    }
                     return projectInfo;
                 }
                 catch (Exception exception)
@@ -140,6 +146,10 @@ namespace common.BL
                     return projectInfo;
                 }
             }
-        }
+
+
+
+
+            }
     }
 }

@@ -22,7 +22,7 @@
             </Grid.RowDefinitions>
             <GroupBox Header="Project List" Grid.Row="0">
                 <ScrollViewer HorizontalScrollBarVisibility="Visible">
-                    <ListView Name="ListView" LostMouseCapture="ListView_OnLostMouseCapture" />
+                    <ListView Name="ListView" LostMouseCapture="ListView_OnLostMouseCapture" BorderBrush="#FFF6F7FB" />
                 </ScrollViewer>                
             </GroupBox>
             <GroupBox Header="LuckyCI Service" Grid.Row="1">
@@ -45,9 +45,9 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Content="run" Name="butOn" Grid.Column="0" Click="btnOn_Click" Height="25"/>
-                        <Button Content="stop" Name="butOff" Grid.Column="1" Click="btnOff_Click" Height="25"/>
-                        <Button Content="reset" Name="butReset" Grid.Column="2" Height="25"/>
+                        <Button Content="Run" Name="butOn" Grid.Column="0" Click="btnOn_Click" Height="25"/>
+                        <Button Content="Stop" Name="butOff" Grid.Column="1" Click="btnOff_Click" Height="25"/>
+                        <Button Content="Reset" Name="butReset" Grid.Column="2" Height="25"/>
                     </Grid>
                 </Grid>
             </GroupBox>

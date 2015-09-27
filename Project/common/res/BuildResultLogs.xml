@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <config>
-  <Projects Name="CordovaProject" />
-  <Projects Name="AndroidProject" />
-  <Projects Name="NetProject" />
+  <Projects Name="CordovaProject"/>
+  <Projects Name="AndroidProject"/>
+  <Projects Name="NetProject"/>
 </config>

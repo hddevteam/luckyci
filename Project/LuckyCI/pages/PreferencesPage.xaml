@@ -7,8 +7,8 @@
       d:DesignHeight="436" d:DesignWidth="640"
 	Title="PreferencesPage">
 
-    <Grid>
-        <GroupBox Header="Preferences" Padding="20 10">
+    <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+        <GroupBox Header="Preferences" Width="600" Height="403" Margin="10,0" Padding="20 10">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="6*" />

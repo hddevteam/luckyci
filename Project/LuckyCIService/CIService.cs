@@ -16,27 +16,34 @@ using Newtonsoft.Json;
 
 namespace LuckyCIService
 {
-    public partial class Service1 : ServiceBase
+    public partial class CIService : ServiceBase
     {
         SvnController _svnController = new SvnController();
         ConfigController _configController = new ConfigController();
         ProjectController _projectController = new ProjectController();
         MailController _mailController = new MailController();                 
         static string _latestRevision;//版本号   
-
-        public Service1()
+        private XmlNodeList _slackPeople;
+        private static string updateLog;
+        public CIService()
         {
-            InitializeComponent();
+            InitializeComponent();         
         }
 
         protected override void OnStart(string[] args)
         {
+            string config = System.AppDomain.CurrentDomain.BaseDirectory;
+            int p = config.LastIndexOf("\\");
+            string parent = config.Substring(0, p - 25);
+            string xmlPath = parent + "\\common\\res\\CIconfig.xml";
+            _slackPeople = _configController.AcquireSlackPeople("/config/SlackPeople/People", xmlPath);
             Thread thread = new Thread(fun);
             thread.Start();
         }
 
         private void fun()
         {
+          
             string config = System.AppDomain.CurrentDomain.BaseDirectory;
             int p = config.LastIndexOf("\\");
             string parent = config.Substring(0, p - 25);
@@ -79,7 +86,7 @@ namespace LuckyCIService
                         SaveInfo(buildFinishedInfo,buildXmlPath,lastXmlPath);
                         //先从本地svn完善项目信息后自动发送邮件
                         ProjectInfo projectInfoGetLocal = _svnController.GetLocalInfo(buildFinishedInfo);
-                        SendSlackMail(projectInfoGetLocal, projectInfo.IfSlack, projectInfo.IfMail,mailPath);
+                        SendSlackMail(projectInfoGetLocal,mailPath,xmlPath);
                     }
                 }
             }
@@ -112,8 +119,8 @@ namespace LuckyCIService
             projectInfo.Duration = time;
             projectInfo.Revision = _latestRevision;
             projectInfo.Log = (configInfo.StandarOutput == "true")
-                ? ("\n" + buildResult + "\n" + log + "\n" + error)
-                : ("\n" + buildResult + "\n" + projectInfo.Duration + "\n" + error);
+                ? ("\n" + log + "\n" + error)
+                : ("\n" + error);
             projectInfo.Result = buildResult;
             return projectInfo;
         }
@@ -147,7 +154,6 @@ namespace LuckyCIService
         /// <returns>是否要更新</returns>
         private Boolean UpdateProject(ProjectInfo projectInfo,string xmlPath,string buildXmlPath)
         {
-            string updateLog = "";     //执行更新操作获取的日志信息
             string updateResult = ""; //执行更新操作的结果
             updateLog = _svnController.Update(projectInfo.Workdirectory, out updateResult,xmlPath);
             //判断版本号
@@ -155,6 +161,7 @@ namespace LuckyCIService
             List<ProjectInfo> infos = new List<ProjectInfo>();
             infos = _projectController.ReadLog("/config/Projects",
                 buildXmlPath);
+            updateLog = updateLog.Replace("<br/>", "\n");
             string[] updateLogSplit = updateLog.Split('\n');
             foreach (var info in infos)
             {
@@ -176,37 +183,101 @@ namespace LuckyCIService
         /// <param name="projectInfo">projectInfoGetLocal的信息</param>
         /// <param name="ifSlack">是否向slack发信息</param>
         /// <param name="ifMail">是否发送邮件</param>
-        private void SendSlackMail(ProjectInfo projectInfo, string ifSlack, string ifMail,string mailPath)
+        private void SendSlackMail(ProjectInfo projectInfo,string mailPath,string xmlPath)
+        {          
+            SendMailSlack sendMailSlack = new SendMailSlack(projectInfo,mailPath,updateLog,xmlPath);
+            Thread sendMail = new Thread(sendMailSlack.SendMail);
+            Thread sendSlack = new Thread(sendMailSlack.SendSlack);
+            Thread sendLogMessage = new Thread(sendMailSlack.SendLogMessage);
+            sendMail.Start();
+            sendSlack.Start();
+            sendLogMessage.Start();
+        }
+
+        protected override void OnStop()
         {
-            if (projectInfo.IfMail == "true")
-            {
-                MailInfo mailInfo = _mailController.EditBody(projectInfo,
-                    mailPath);
-                _mailController.SendMail(mailInfo);
-            }
+        }
+    }
+
+    public class SendMailSlack
+    {
+        ConfigController _configController = new ConfigController();
+        MailController _mailController = new MailController();
+        private ProjectInfo projectInfo;
+        private string mailPath;
+        private string updateNewLog;
+        private XmlNodeList _slackPeople;
+        /// <summary>
+        /// 构造函数，在线程启动之前，进行赋值
+        /// </summary>
+        /// <param name="projectInfo">项目信息</param>
+        /// <param name="ifSlack">是否发送slack</param>
+        /// <param name="ifMail">是否发送邮件</param>
+        public SendMailSlack(ProjectInfo projectInfo,string mailPath,string updateLog,string xmlParh)
+        {
+            _slackPeople = _configController.AcquireSlackPeople("/config/SlackPeople/People", xmlParh);
+            this.projectInfo = projectInfo;
+            this.mailPath = mailPath;
+            this.updateNewLog = updateLog;
+        }
+        /// <summary>
+        /// 发送邮件
+        /// </summary>
+        public void SendMail()
+        {
             try
             {
-                if (ifSlack == "true")
+                if (projectInfo.IfMail == "true")
+                {
+                    MailInfo mailInfo = _mailController.EditBody(projectInfo,
+                        mailPath);
+                    _mailController.SendMail(mailInfo);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
+        /// <summary>
+        /// 发送slack
+        /// </summary>
+        /// <returns></returns>
+        public void SendSlack()
+        {
+            try
+            {
+                if (projectInfo.IfSlack == "true")
                 {
                     WebClient webClient = new WebClient();
                     string slackBody = projectInfo.SlackContent;
                     slackBody = slackBody.Replace("projectName", projectInfo.Nameproperty);
                     slackBody = slackBody.Replace("versionNum", projectInfo.Revision);
+                    slackBody = slackBody.Replace("buildtime", projectInfo.Duration);
                     string[] contentItem = slackBody.Split('#');
                     string slackEmoji = projectInfo.Result == "successful"
                         ? contentItem[1].Split(':')[0]
                         : contentItem[1].Split(':')[1];
-                    contentItem[contentItem.Length - 2] = projectInfo.Result == "successful"
-                        ? contentItem[contentItem.Length - 2].Split(':')[0]
-                        : contentItem[contentItem.Length - 2].Split(':')[1];
+                    contentItem[contentItem.Length - 3] = projectInfo.Result == "successful"
+                        ? contentItem[contentItem.Length - 3].Split(':')[0]
+                        : contentItem[contentItem.Length - 3].Split(':')[1];
                     slackBody = "";
                     for (int i = 2; i < contentItem.Length - 1; i++)
                     {
-                        slackBody += contentItem[i];
+                        slackBody += contentItem[i] + " ";
                     }
                     string userName = projectInfo.SlackUser == "#author#" ? projectInfo.Author.Remove(0, 3)
-                    : projectInfo.SlackUser;
+                    : projectInfo.SlackUser.Replace("#", "");
                     //将传输信息写入json
+                    foreach (XmlNode people in _slackPeople)
+                    {
+                        if (userName == people.Attributes["Name"].Value)
+                        {
+                            userName = people.InnerText;
+                            break;
+                        }
+                    }
                     var payLoad = new
                     {
                         channel = projectInfo.SlackChannel,
@@ -220,11 +291,54 @@ namespace LuckyCIService
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
-            }
-        }
 
-        protected override void OnStop()
+            }
+
+        }
+        /// <summary>
+        /// 发送最近版本的log信息
+        /// </summary>
+        public void SendLogMessage()
         {
+            try
+            {
+                if (projectInfo.IfSlack == "true")
+                {
+                    WebClient webClient = new WebClient();
+                    string userName = projectInfo.SlackUser == "#author#" ? projectInfo.Author.Remove(0, 3)
+                    : projectInfo.SlackUser.Replace("#", "");
+                    string logMessage = projectInfo.Nameproperty + " revision" + projectInfo.Revision + ": " + projectInfo.LogMessage;
+                    //将传输信息写入json
+                    foreach (XmlNode people in _slackPeople)
+                    {
+                        if (userName == people.Attributes["Name"].Value)
+                        {
+                            userName = people.InnerText;
+                            break;
+                        }
+                    }
+                    //添加update信息
+                    string[] update = updateNewLog.Split('\n');
+                    for (int i = 1; i < update.Length - 2; i++)
+                    {
+                        logMessage += "\n" + update[i];
+                    }
+                    //发送信息到slack
+                    var payLoad = new
+                    {
+                        channel = projectInfo.SlackChannel,
+                        text = ":" + "triangular_flag_on_post" + ":" + logMessage,
+                        username = userName
+                    };
+                    string json = JsonConvert.SerializeObject(payLoad);
+                    string slackResult = webClient.UploadString(projectInfo.SlackUrl, json);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+
+            }
         }
     }
 }

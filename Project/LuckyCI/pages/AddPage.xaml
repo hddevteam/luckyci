@@ -214,7 +214,7 @@
                                                 </TextBlock>
                                                 <Image Name="quesMark" VerticalAlignment="Center" Source="../images/ques_mark.png" Height="20" Width="20" Grid.Column="1" AllowDrop="True" ToolTip=""></Image>
                                                 <TextBox Name="SlackContent" Grid.Column="2" Height="25" VerticalContentAlignment="Center">
-                                                    #smile:smiling_imp#projectName#revision versionNum#build successful:build failed#
+                                                    #smile:smiling_imp#projectName#revision versionNum#build successful:build failed#,cost buildtime#
                                                 </TextBox>
                                             </Grid>
                                             <Grid Grid.Row="4">

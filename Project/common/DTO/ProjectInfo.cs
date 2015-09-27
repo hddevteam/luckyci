@@ -54,8 +54,10 @@ namespace common.DTO
         private string slackUser;
         //slack的发送内容
         private string slackContent;
-        //project index
+        //project 索引
         private string index;
+        //项目提交的logMessage
+        private string logMessage;
         
         //---------------------------------------------------------
 
@@ -234,6 +236,19 @@ namespace common.DTO
            set { slackContent = value; }
        }
 
-       //---------------------------------------------------------
+        public string LogMessage
+        {
+            get
+            {
+                return logMessage;
+            }
+
+            set
+            {
+                logMessage = value;
+            }
+        }
+
+        //---------------------------------------------------------
     }
 }

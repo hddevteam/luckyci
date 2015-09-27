@@ -92,5 +92,16 @@ namespace common.BL
                 return configInfo;
             }
         }
+        /// <summary>
+        /// 获取人名对应表
+        /// </summary>
+        /// <param name="nodePath">人名对应表节点路径</param>
+        /// <param name="xmlPath">存放对应表的xml文件路径</param>
+        /// <returns></returns>
+        public XmlNodeList AcquireSlackPeople(string nodePath, string xmlPath)
+        {
+            XmlDao dao = new XmlDao();
+           return dao.XmlQuery( nodePath,xmlPath);
+        }
     }
 }

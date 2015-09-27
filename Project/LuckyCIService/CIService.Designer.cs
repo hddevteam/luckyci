@@ -1,6 +1,6 @@
 ﻿namespace LuckyCIService
 {
-    partial class Service1
+    partial class CIService
     {
         /// <summary> 
         /// 必需的设计器变量。

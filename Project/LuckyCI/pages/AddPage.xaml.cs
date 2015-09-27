@@ -10,6 +10,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Navigation;
 using System.Linq;
+using System.Xml;
 
 namespace LuckyCI.pages
 {
@@ -28,7 +29,7 @@ namespace LuckyCI.pages
         static string revision=null;//版本号   
         bool updateRevision=true;//判断版本更新
         string err = "";//错误信息输出
-        private int index;//传过来要进行操作的项目序号
+        private int index;//传过来要进行操作的项目的序号
         static ProjectInfo modifyProject;
 
         /// <summary>
@@ -177,6 +178,7 @@ namespace LuckyCI.pages
         /// <param name="e"></param>
         private void btnCheck_Click(object sender, RoutedEventArgs e)
         {
+
             SvnInfo svnInfo = new SvnInfo();
             svnInfo.Repositorypath = respoPath.Text;
             svnInfo.Workdirectory = Workspace.Text;
@@ -187,7 +189,7 @@ namespace LuckyCI.pages
             {
                 MessageBox.Show("请先填写完整的信息！");
             }
-            else  if (check.IsChecked.ToString() == "False")
+            else if (check.IsChecked.ToString() == "False")
             {
                 if (Directory.Exists(filePath))
                 {
@@ -196,13 +198,13 @@ namespace LuckyCI.pages
                 else
                 {
                     logs.Text = "检索信息：" + _svnController.CheckOut(svnInfo.Repositorypath, svnInfo.Workdirectory, out checkResult, "../../../common/res/CIConfig.xml") + "\n" + this.logs.Text + "\n";
-                    currentRe.Text = checkResult; 
+                    currentRe.Text = checkResult;
                 }
             }
             else
             {
-                logs.Text="检索信息："+_svnController.CheckOut(svnInfo.Repositorypath, svnInfo.Workdirectory, out checkResult, "../../../common/res/CIConfig.xml") +"\n"+this.logs.Text+"\n";
-                currentRe.Text = checkResult;                 
+                logs.Text = "检索信息：" + _svnController.CheckOut(svnInfo.Repositorypath, svnInfo.Workdirectory, out checkResult, "../../../common/res/CIConfig.xml") + "\n" + this.logs.Text + "\n";
+                currentRe.Text = checkResult;
             }
         }
 

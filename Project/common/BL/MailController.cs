@@ -75,7 +75,7 @@ namespace common.BL
                 body = body.Replace("$DATE$", projectInfo.Changetime);
                 body = body.Replace("$RESULT$", "Build " + projectInfo.Result);
                 body = body.Replace("$DURATION$", projectInfo.Duration);
-                body = projectInfo.Log == ""
+                body = projectInfo.Log == "\n"
                     ? body.Replace("$LOGLABEL$", "")
                     : body.Replace("$LOGLABEL$", "Build Log");
                 mailInfo.Subject = header;
