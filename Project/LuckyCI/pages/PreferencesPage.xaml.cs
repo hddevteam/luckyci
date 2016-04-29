@@ -53,7 +53,11 @@ namespace LuckyCI.pages
                     windowprocess.IsChecked = false;
                     serviceprocess.IsChecked = false;
                     break;
-            }            
+            }
+            ReportFrom.Text = configInfo.ReportFrom;
+            ReportTo.Text = configInfo.ReportTo;
+            Password.Text = configInfo.Password;
+            SmtpServer.Text = configInfo.SmtpServer;
         }
 
         /// <summary>
@@ -63,10 +67,16 @@ namespace LuckyCI.pages
         {
             ConfigController configController = new ConfigController();
             ConfigInfo configInfo = new ConfigInfo();
+            //global
             configInfo.StandarOutput = standaroutput.IsChecked == true ? "true" : "false";
             configInfo.Svnpath = Svnpath.Text;
             configInfo.Updateinterval = Updateinterval.Text;
             configInfo.ServiceSwitch = (windowprocess.IsChecked == true) ? "window" : "service";
+            //config report
+            configInfo.ReportFrom = ReportFrom.Text;
+            configInfo.Password = Password.Text;
+            configInfo.SmtpServer = SmtpServer.Text;
+            configInfo.ReportTo = ReportTo.Text;
             var result = configController.SaveConfig(configInfo, "../../../common/res/CIConfig.xml");
             MessageBox.Show(result);
         }
@@ -91,6 +101,10 @@ namespace LuckyCI.pages
             standaroutput.IsChecked = true;
             windowprocess.IsChecked = true;
             serviceprocess.IsChecked = false;
+            ReportFrom.Text = configInfo.ReportFrom;
+            ReportTo.Text = configInfo.ReportTo;
+            Password.Text = configInfo.Password;
+            SmtpServer.Text = configInfo.SmtpServer;
         }
 
         /// <summary>

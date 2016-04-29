@@ -41,7 +41,7 @@ namespace common.TOOL
             process.ErrorDataReceived += new DataReceivedEventHandler(ErrorOnDataReceived);         
             process.Start();
             process.BeginOutputReadLine();
-            process.BeginErrorReadLine();  
+            process.BeginErrorReadLine();
             process.WaitForExit();
             TimeSpan timeSpan = process.ExitTime.Subtract(process.StartTime);
             time += timeSpan.Hours == 0 ? "" : timeSpan.Hours + " h";
@@ -53,7 +53,6 @@ namespace common.TOOL
             err = error.Replace("\n", "<br/>");
             return output.Replace("\n", "<br/>");
         }
-
         /// <summary>
         /// 异步进行获取output的信息
         /// </summary>

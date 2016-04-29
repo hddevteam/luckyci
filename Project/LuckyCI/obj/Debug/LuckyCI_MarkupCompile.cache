@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\ccy_god\Desktop\LuckyCItest\Project\LuckyCI\obj\Debug\
+C:\LuckyCI\LuckyCI\Project\LuckyCI\obj\Debug\
 LuckyCI
 none
 false
 DEBUG;TRACE
-C:\Users\ccy_god\Desktop\LuckyCItest\Project\LuckyCI\App.xaml
+C:\LuckyCI\LuckyCI\Project\LuckyCI\App.xaml
 5-1337414482
 1-2096218005
 91669166027
-18139206234
+19-1658297169
 pages\AddPage.xaml;pages\AllProjectsPage.xaml;pages\EditProject.xaml;pages\Help.xaml;pages\PreferencesPage.xaml;
 
 False

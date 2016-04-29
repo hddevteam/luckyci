@@ -58,12 +58,29 @@ namespace common.DTO
         private string index;
         //项目提交的logMessage
         private string logMessage;
-        
+        //Slack是否发送运行结果
+        private string selectResult;
+        //Slack是否发送svn更新的文件信息
+        private string selectUpdate;
+        //Slack是否发送svn提交时的注释
+        private string selectCommit;
+        //版本号
+        private string gitVersion;
+        //项目类型
+        private string projectType;
+        //开始编译时间
+        private string startTime;
+        //编译结束时间
+        private string endTime;
+        //编译操作的分支
+        private string branch;
         //---------------------------------------------------------
 
         //------------------ProjectInfo类的无参数构造方法---------------------------------------
         public ProjectInfo()
         {
+            this.ProjectType = "";
+            this.GitVersion = "";
             this.nameProperty = "";
             this.statusProperty = "";
             this.repositoryPath = "";
@@ -80,6 +97,10 @@ namespace common.DTO
             this.IfSlack = "";
             this.SlackUrl = "";
             this.SlackChannel = "";
+            this.SelectResult = "";
+            this.SelectUpdate = "";
+            this.SelectCommit = "";
+            this.branch = "";
         }
         //---------------------------------------------------------
 
@@ -96,19 +117,19 @@ namespace common.DTO
             set { statusProperty = value; }
         }
 
-        public string Repositorypath
+        public string RepositoryPath
         {
             get { return repositoryPath; }
             set { repositoryPath = value; }
         }
 
-        public string Workdirectory
+        public string WorkDirectory
         {
             get { return workDirectory; }
             set { workDirectory = value; }
         }
 
-        public string Buildcommand
+        public string BuildCommand
         {
             get { return buildCommand; }
             set { buildCommand = value; }
@@ -246,6 +267,89 @@ namespace common.DTO
             set
             {
                 logMessage = value;
+            }
+        }
+
+       public string SelectResult
+       {
+           get { return selectResult; }
+           set { selectResult = value; }
+       }
+
+       public string SelectUpdate
+       {
+           get { return selectUpdate; }
+           set { selectUpdate = value; }
+       }
+
+       public string SelectCommit
+       {
+           get { return selectCommit; }
+           set { selectCommit = value; }
+       }
+
+        public string GitVersion
+        {
+            get
+            {
+                return gitVersion;
+            }
+
+            set
+            {
+                gitVersion = value;
+            }
+        }
+
+        public string ProjectType
+        {
+            get
+            {
+                return projectType;
+            }
+
+            set
+            {
+                projectType = value;
+            }
+        }
+
+        public string StartTime
+        {
+            get
+            {
+                return startTime;
+            }
+
+            set
+            {
+                startTime = value;
+            }
+        }
+
+        public string EndTime
+        {
+            get
+            {
+                return endTime;
+            }
+
+            set
+            {
+                endTime = value;
+            }
+        }
+
+        public string Branch
+        {
+            get
+            {
+                return branch;
+            }
+
+            set
+            {
+                branch = value;
             }
         }
 

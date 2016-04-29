@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Navigation;
 using System.Linq;
 using System.Xml;
+using Microsoft.Win32;
 
 namespace LuckyCI.pages
 {
@@ -19,9 +20,13 @@ namespace LuckyCI.pages
     /// </summary>
     public partial class AddPage : Page
     {
+        GitController _gitlabController = new GitController();
+
+
         ConfigController _configController = new ConfigController();
         NavigationService _navigationService;
         SvnController _svnController = new SvnController();
+        ProjectController _projectController = new ProjectController();
         ProjectInfo _projectInfo = new ProjectInfo();
         DispatcherTimer _timer = new DispatcherTimer();
         static string log;//运行日志                   
@@ -72,11 +77,11 @@ namespace LuckyCI.pages
                     modifyProject = projectInfos[index];
                     if (modifyProject != null)
                     {
-                        respoPath.Text = modifyProject.Repositorypath;
+                        respoPath.Text = modifyProject.RepositoryPath;
                         projectName.Text = modifyProject.Nameproperty;
-                        Workspace.Text = modifyProject.Workdirectory;
+                        Workspace.Text = modifyProject.WorkDirectory;
                         Mailto.Text = modifyProject.MailTo;
-                        Buildcomand.Text = modifyProject.Buildcommand;
+                        Buildcomand.Text = modifyProject.BuildCommand;
                         CheckMail.IsChecked = Convert.ToBoolean(modifyProject.IfMail);
                         CheckSlack.IsChecked = Convert.ToBoolean(modifyProject.IfSlack);
                         Host.Text = modifyProject.MailHost;
@@ -85,6 +90,8 @@ namespace LuckyCI.pages
                         SlackUrl.Text = modifyProject.SlackUrl;
                         SlackChannel.Text = modifyProject.SlackChannel;
                         buildRe.Text = modifyProject.Result;
+                        if (modifyProject.ProjectType=="git") { Git.IsChecked = true; }
+                        if (modifyProject.ProjectType=="svn") { Svn.IsChecked = true; }
                     }
                     Dictionary<string, string> initIndex = new Dictionary<string, string>();
                     initIndex.Add("index", "-1");
@@ -189,7 +196,7 @@ namespace LuckyCI.pages
             {
                 MessageBox.Show("请先填写完整的信息！");
             }
-            else if (check.IsChecked.ToString() == "False")
+            else if (check.IsChecked.ToString() == "false")
             {
                 if (Directory.Exists(filePath))
                 {
@@ -197,14 +204,21 @@ namespace LuckyCI.pages
                 }
                 else
                 {
+
+                    //logs.Text = "检索信息：" + _gitlabController.GitClone(svnInfo.Workdirectory, svnInfo.Repositorypath, out checkResult) + "\n" + this.logs.Text + "\n";
+                    //currentRe.Text = checkResult;
+
                     logs.Text = "检索信息：" + _svnController.CheckOut(svnInfo.Repositorypath, svnInfo.Workdirectory, out checkResult, "../../../common/res/CIConfig.xml") + "\n" + this.logs.Text + "\n";
                     currentRe.Text = checkResult;
                 }
             }
             else
             {
-                logs.Text = "检索信息：" + _svnController.CheckOut(svnInfo.Repositorypath, svnInfo.Workdirectory, out checkResult, "../../../common/res/CIConfig.xml") + "\n" + this.logs.Text + "\n";
+
+                logs.Text = "检索信息：" + _gitlabController.GitPull(svnInfo.Workdirectory,out checkResult) + "\n" + this.logs.Text + "\n";
                 currentRe.Text = checkResult;
+                //logs.Text = "检索信息：" + _svnController.CheckOut(svnInfo.Repositorypath, svnInfo.Workdirectory, out checkResult, "../../../common/res/CIConfig.xml") + "\n" + this.logs.Text + "\n";
+                //currentRe.Text = checkResult;
             }
         }
 
@@ -217,8 +231,7 @@ namespace LuckyCI.pages
         {
             SvnInfo svnInfo = new SvnInfo();
             svnInfo.Workdirectory = Workspace.Text;
-            string updateResult;
-            string updateLog;
+            ProjectInfo setInfo = new ProjectInfo();
             if (respoPath.Text == "" || 
                 projectName.Text == "" || 
                 Workspace.Text == "" ||              
@@ -230,9 +243,16 @@ namespace LuckyCI.pages
             }
             else
             {
-                updateLog = _svnController.Update(svnInfo.Workdirectory, out updateResult, "../../../common/res/CIConfig.xml");
+                string updateResult;
+                var updateLog = _svnController.Update(svnInfo.Workdirectory, out updateResult, "../../../common/res/CIConfig.xml");
                 logs.Text="更新信息："+updateLog+"\n"+this.logs.Text+"\n";
                 revision = Regex.Match(updateLog, @"revision\s[0-9]+").Value.Replace("revision", "");
+                Dictionary<string, string> setValue = new Dictionary<string, string>();
+                setInfo.WorkDirectory = svnInfo.Workdirectory;
+                setInfo.RepositoryPath = respoPath.Text;
+                setInfo = _svnController.GetLocalInfo(setInfo);
+                setValue.Add("Name", setInfo.Author.Split('\\')[1]);
+                _projectController.CommitStat("update", setValue, "config/Member", "../../../common/res/InfoStatics.xml");
             }
         }
 
@@ -252,17 +272,27 @@ namespace LuckyCI.pages
             else
             {
                 ProjectInfo projectInfo = new ProjectInfo();
-                projectInfo.Workdirectory = Workspace.Text;
-                projectInfo.Repositorypath = respoPath.Text;
+                projectInfo.WorkDirectory = Workspace.Text;
+                projectInfo.RepositoryPath = respoPath.Text;
                 projectInfo.MailTo = Mailto.Text;
-                projectInfo.Buildcommand = Buildcomand.Text;
+                projectInfo.BuildCommand = Buildcomand.Text;
                 string buildResult = "";
                 string time = "";
                 Task buildTask = new Task(() =>
                 {
                     projectInfo.BuildTime = DateTime.Now.ToString();
-                    log = projectController.Build(projectInfo.Buildcommand, projectInfo.Workdirectory, out buildResult,
+                    log = projectController.Build(projectInfo.BuildCommand, projectInfo.WorkDirectory, out buildResult,
                         out err,out time);
+                    Dictionary<string, string> setValue = new Dictionary<string, string>();
+                    setValue.Add("Name", _svnController.GetLocalInfo(projectInfo).Author.Split('\\')[1]);
+                    if (buildResult == "successful")
+                    {
+                        _projectController.CommitStat("success", setValue, "config/Member", "../../../common/res/InfoStatics.xml");
+                    }
+                    else if (buildResult == "failed")
+                    {
+                        _projectController.CommitStat("failure", setValue, "config/Member", "../../../common/res/InfoStatics.xml");
+                    }
                     Dispatcher.BeginInvoke(new Action(() =>
                     {
                         duration = time;
@@ -297,7 +327,7 @@ namespace LuckyCI.pages
             else
             {
                 ConfigInfo configInfo = _configController.ConfigQuery("config/preferences", "../../../common/res/CIConfig.xml");
-                _projectInfo.Workdirectory = Workspace.Text;
+                _projectInfo.WorkDirectory = Workspace.Text;
                 _projectInfo = _svnController.GetLocalInfo(_projectInfo);
                 _projectInfo.Nameproperty = projectName.Text;
                 _projectInfo.Log = (configInfo.StandarOutput == "true") ? ((log + err).Replace("\n", "<br/>")) : (err.Replace("\n", "<br/>"));
@@ -309,7 +339,9 @@ namespace LuckyCI.pages
                 _projectInfo.UserName = Username.Text;
                 _projectInfo.Password = Password.Text;
                 MailController mailController = new MailController();
-                MailInfo mailInfo = mailController.EditBody(_projectInfo, "../../../common/SendMail.html");
+                Dictionary<string, Dictionary<string, string>> allStatics =
+                    _projectController.GetStatData("config/Member", "../../../common/res/InfoStatics.xml");
+                MailInfo mailInfo = mailController.EditBody(_projectInfo, allStatics, "../../../common/SendMail.html",null);
                 sendRe.Text = mailController.SendMail(mailInfo);
             }
         }
@@ -337,6 +369,7 @@ namespace LuckyCI.pages
             else
             {
                 //存储前台输入的信息
+               
                 var childNodes = new Dictionary<string, string>();
                 var property = new Dictionary<string, string>();
                 childNodes.Add("RepositoryPath", respoPath.Text);
@@ -352,6 +385,13 @@ namespace LuckyCI.pages
                 childNodes.Add("Password",Password.Text);
                 childNodes.Add("SlackUser",SLackUser.Text);
                 childNodes.Add("SlackContent",SlackContent.Text);
+                childNodes.Add("SlackResult", SelectResult.IsChecked.ToString().ToLower());
+                childNodes.Add("SlackUpdate", SelectUpdate.IsChecked.ToString().ToLower());
+                childNodes.Add("SlackCommit", SelectCommit.IsChecked.ToString().ToLower());
+                childNodes.Add("GitVersion", "");
+                //存储项目的类型
+                if (Svn.IsChecked == true) { childNodes.Add("ProjectType","svn"); }
+                if (Git.IsChecked==true)   { childNodes.Add("ProjectType","git"); }
                 property.Add("Name", projectName.Text);
                 property.Add("Status", "true");
                 bool ifExist = false;
@@ -393,6 +433,21 @@ namespace LuckyCI.pages
             Password.Clear();
             Mailto.Clear();
             Buildcomand.Clear();
+        }
+
+        private void chooseFile_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                OpenFileDialog fd = new OpenFileDialog();
+                fd.ShowDialog();
+                string path = fd.FileName;
+                System.Diagnostics.Process.Start(path);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
     }

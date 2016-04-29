@@ -9,24 +9,58 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "common", "common\common.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuckyCIService", "LuckyCIService\LuckyCIService.csproj", "{AD26C2CF-E715-4A95-98EB-4EF03501C4BF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuckyCIWebAPI", "LuckyCIWebAPI\LuckyCIWebAPI.csproj", "{90AF840A-AF54-4D02-AB3F-844F28EE71DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuckyCIPost", "LuckyCIPost\LuckyCIPost.csproj", "{79C84DFE-345C-49FC-BE0D-42F2ADD3156A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D6D526F0-44BA-4BBF-A8C2-C8640198686A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D6D526F0-44BA-4BBF-A8C2-C8640198686A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6D526F0-44BA-4BBF-A8C2-C8640198686A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D6D526F0-44BA-4BBF-A8C2-C8640198686A}.Debug|x86.Build.0 = Debug|Any CPU
 		{D6D526F0-44BA-4BBF-A8C2-C8640198686A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6D526F0-44BA-4BBF-A8C2-C8640198686A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6D526F0-44BA-4BBF-A8C2-C8640198686A}.Release|x86.ActiveCfg = Release|Any CPU
+		{D6D526F0-44BA-4BBF-A8C2-C8640198686A}.Release|x86.Build.0 = Release|Any CPU
 		{243366B9-C8F2-4A44-B652-FBA384566E3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{243366B9-C8F2-4A44-B652-FBA384566E3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{243366B9-C8F2-4A44-B652-FBA384566E3A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{243366B9-C8F2-4A44-B652-FBA384566E3A}.Debug|x86.Build.0 = Debug|Any CPU
 		{243366B9-C8F2-4A44-B652-FBA384566E3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{243366B9-C8F2-4A44-B652-FBA384566E3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{243366B9-C8F2-4A44-B652-FBA384566E3A}.Release|x86.ActiveCfg = Release|Any CPU
+		{243366B9-C8F2-4A44-B652-FBA384566E3A}.Release|x86.Build.0 = Release|Any CPU
 		{AD26C2CF-E715-4A95-98EB-4EF03501C4BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AD26C2CF-E715-4A95-98EB-4EF03501C4BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD26C2CF-E715-4A95-98EB-4EF03501C4BF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AD26C2CF-E715-4A95-98EB-4EF03501C4BF}.Debug|x86.Build.0 = Debug|Any CPU
 		{AD26C2CF-E715-4A95-98EB-4EF03501C4BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD26C2CF-E715-4A95-98EB-4EF03501C4BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD26C2CF-E715-4A95-98EB-4EF03501C4BF}.Release|x86.ActiveCfg = Release|Any CPU
+		{AD26C2CF-E715-4A95-98EB-4EF03501C4BF}.Release|x86.Build.0 = Release|Any CPU
+		{90AF840A-AF54-4D02-AB3F-844F28EE71DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90AF840A-AF54-4D02-AB3F-844F28EE71DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90AF840A-AF54-4D02-AB3F-844F28EE71DB}.Debug|x86.ActiveCfg = Debug|x86
+		{90AF840A-AF54-4D02-AB3F-844F28EE71DB}.Debug|x86.Build.0 = Debug|x86
+		{90AF840A-AF54-4D02-AB3F-844F28EE71DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90AF840A-AF54-4D02-AB3F-844F28EE71DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90AF840A-AF54-4D02-AB3F-844F28EE71DB}.Release|x86.ActiveCfg = Release|x86
+		{90AF840A-AF54-4D02-AB3F-844F28EE71DB}.Release|x86.Build.0 = Release|x86
+		{79C84DFE-345C-49FC-BE0D-42F2ADD3156A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79C84DFE-345C-49FC-BE0D-42F2ADD3156A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79C84DFE-345C-49FC-BE0D-42F2ADD3156A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{79C84DFE-345C-49FC-BE0D-42F2ADD3156A}.Debug|x86.Build.0 = Debug|Any CPU
+		{79C84DFE-345C-49FC-BE0D-42F2ADD3156A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79C84DFE-345C-49FC-BE0D-42F2ADD3156A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79C84DFE-345C-49FC-BE0D-42F2ADD3156A}.Release|x86.ActiveCfg = Release|Any CPU
+		{79C84DFE-345C-49FC-BE0D-42F2ADD3156A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

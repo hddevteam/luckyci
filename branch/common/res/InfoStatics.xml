@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <WeekTotal>
+    <CommitTimes>0</CommitTimes>
+    <BuildTimes>0</BuildTimes>
+    <BuildSuccessTimes>0</BuildSuccessTimes>
+    <BuildFailedTimes>0</BuildFailedTimes>
+  </WeekTotal>
+  <Member Name="ccy">
+    <FullName>cuichongyang</FullName>
+    <Week>0</Week>
+    <Success>0</Success>
+    <Failure>0</Failure>
+  </Member>
+  <Member Name="dy">
+    <FullName>dongyu</FullName>
+    <Week>0</Week>
+    <Success>0</Success>
+    <Failure>0</Failure>
+  </Member>
+  <Member Name="jxm">
+    <FullName>jiaxiaoming</FullName>
+    <Week>0</Week>
+    <Success>0</Success>
+    <Failure>0</Failure>
+  </Member>
+  <Member Name="zys">
+    <FullName>zhangyanshi</FullName>
+    <Week>0</Week>
+    <Success>0</Success>
+    <Failure>0</Failure>
+  </Member>
+  <Member Name="lfq">
+    <Week>0</Week>
+    <Success>0</Success>
+    <Failure>0</Failure>
+  </Member>
+  <Member Name="zpp">
+    <FullName>zhangpanpan</FullName>
+    <Week>0</Week>
+    <Success>0</Success>
+    <Failure>0</Failure>
+  </Member>
+  <Projects></Projects>
+</config>

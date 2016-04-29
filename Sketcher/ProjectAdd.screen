@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Window" id="2" width="640" height="480" text="Gradlew CI" measuredWidth="640" measuredHeight="480" minimizeButton="true" maximizeButton="true"/>
+  <widgets xsi:type="model:Menu" id="36" y="19" width="640" text="&amp;Main,&amp;File,&amp;Options,&amp;Help" measuredWidth="640" measuredHeight="30" selection="1">
+    <items link="Status.screen" x="5" y="0" width="40" height="30" text="&amp;Main"/>
+    <items x="45" y="0" width="30" height="30" text="&amp;File"/>
+    <items link="Preferences.screen" x="75" y="0" width="57" height="30" text="&amp;Options"/>
+    <items x="132" y="0" width="38" height="30" text="&amp;Help"/>
+  </widgets>
+  <widgets xsi:type="model:Group" id="37" x="10" y="56" width="620" height="393" text="Add Project" measuredWidth="620" measuredHeight="393">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="66" x="293" y="407" width="327" measuredWidth="326" measuredHeight="27">
+    <widgets xsi:type="model:Button" id="48" width="69" text="Checkout" measuredWidth="69" measuredHeight="27">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="49" x="74" width="69" text="Update" measuredWidth="69" measuredHeight="27">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="53" x="204" width="74" text="Send log" measuredWidth="74" measuredHeight="27">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="54" x="148" width="50" text="Build" measuredWidth="50" measuredHeight="27">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="55" x="283" width="43" text="Run" measuredWidth="43" measuredHeight="27">
+      <font/>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="84" x="20" y="315" measuredWidth="261" measuredHeight="124">
+    <widgets xsi:type="model:Group" id="61" width="261" height="124" text="Result" measuredWidth="261" measuredHeight="124">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="56" x="10" y="22" text="Last CI Result :" measuredWidth="91" measuredHeight="25">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="57" x="10" y="47" text="Check Result :" measuredWidth="87" measuredHeight="25">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="58" x="10" y="72" text="Build Result :" measuredWidth="81" measuredHeight="25">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="59" x="10" y="97" text="Send Result :" measuredWidth="81" measuredHeight="25">
+      <font/>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="81" x="20" y="80" measuredWidth="261" measuredHeight="231">
+    <widgets xsi:type="model:Group" id="50" width="261" height="231" text="log" measuredWidth="261" measuredHeight="231">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Text" id="60" x="10" y="13" width="241" height="207" text="Running command: E:\myProjects\fund\platforms\android\cordova\run.bat&#xA;ANDROID_HOME=C:\Program Files (x86)\Android\android-sdk&#xA;JAVA_HOME=C:\Program Files (x86)\Java\jdk1.7.0_55&#xA;&#xA;E:\myProjects\fund\platforms\android\cordova\node_modules\q\q.js:126&#xA;                    throw e;&#xA;                          ^&#xA;Error executing &quot;adb devices&quot;: error:&#xA;ERROR running one or more of the platforms: Error: &#xA;&#xA;" measuredWidth="241" measuredHeight="207">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Note" id="52" x="114" y="18" text="当前项目上次运行结果" measuredWidth="137" measuredHeight="31">
+      <font/>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="83" x="293" y="80" measuredWidth="327" measuredHeight="313">
+    <widgets xsi:type="model:Group" id="65" width="327" height="313" text="Options" measuredWidth="327" measuredHeight="313">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="40" x="14" y="20" measuredWidth="299" measuredHeight="25">
+      <widgets xsi:type="model:TextField" id="9" x="114" width="185" text="Fund" measuredWidth="185" measuredHeight="25">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="16" width="87" text="Project Name :" measuredWidth="87" measuredHeight="25">
+        <font/>
+      </widgets>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="33" x="14" y="55" measuredWidth="299" measuredHeight="25">
+      <widgets xsi:type="model:TextField" id="10" x="114" width="185" text="http://svn.it.henu.edu.cn/svn/fund/project" measuredWidth="185" measuredHeight="25">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="17" width="100" text="Repository Path :" measuredWidth="100" measuredHeight="25">
+        <font/>
+      </widgets>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="31" x="14" y="90" measuredWidth="299" measuredHeight="25">
+      <widgets xsi:type="model:TextField" id="12" x="114" width="185" text="C:\Users\硕臻\Desktop\project" measuredWidth="185" measuredHeight="25">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="19" width="107" text="Working diretory :" measuredWidth="107" measuredHeight="25">
+        <font/>
+      </widgets>
+    </widgets>
+    <widgets xsi:type="model:Checkbox" id="15" x="134" y="230" text="Force overwrite" measuredWidth="111" measuredHeight="25" selected="true">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="82" x="163" y="275" measuredWidth="148" measuredHeight="27">
+      <widgets xsi:type="model:Button" id="23" width="67" text="Save" measuredWidth="67" measuredHeight="27">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Button" id="25" x="81" width="67" text="Cancel" measuredWidth="67" measuredHeight="27">
+        <font/>
+      </widgets>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="41" x="14" y="125" measuredWidth="299" measuredHeight="25">
+      <widgets xsi:type="model:TextField" id="42" x="114" width="185" text="IT\XXX" measuredWidth="185" measuredHeight="25">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="43" width="68" text="Username :" measuredWidth="68" measuredHeight="25">
+        <font/>
+      </widgets>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="44" x="14" y="195" measuredWidth="299" measuredHeight="25">
+      <widgets xsi:type="model:TextField" id="45" x="114" width="185" text="***********" measuredWidth="185" measuredHeight="25">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="46" width="65" text="Password :" measuredWidth="65" measuredHeight="25">
+        <font/>
+      </widgets>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="62" x="14" y="160" measuredWidth="299" measuredHeight="25">
+      <widgets xsi:type="model:TextField" id="63" x="114" width="185" text="XXX@it.henu.edu.cn" measuredWidth="185" measuredHeight="25">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="64" width="51" text="Mail to :" measuredWidth="51" measuredHeight="25">
+        <font/>
+      </widgets>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="80" y="455" measuredWidth="640" measuredHeight="25">
+    <widgets xsi:type="model:Panel" id="67" width="640" height="25" measuredWidth="640" measuredHeight="25"/>
+    <widgets xsi:type="model:WidgetGroup" id="72" x="128" y="1" width="101" measuredWidth="100" measuredHeight="24">
+      <widgets xsi:type="model:Label" id="68" width="85" text="Last CI Result :" measuredWidth="85" measuredHeight="24">
+        <font size="11px"/>
+      </widgets>
+      <widgets xsi:type="model:Icon" id="71" x="84" y="4" measuredWidth="16" measuredHeight="16" foreground="#6aa84f" icon="bullet (small)" iconRotation="270"/>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="74" x="485" y="1" width="144" measuredWidth="143" measuredHeight="24">
+      <widgets xsi:type="model:Label" id="70" width="117" text="Last Build Duration :" measuredWidth="117" measuredHeight="24">
+        <font size="11px"/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="73" x="116" width="27" text="20 s" measuredWidth="27" measuredHeight="24">
+        <font size="11px"/>
+      </widgets>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="76" x="255" y="1" width="203" measuredWidth="202" measuredHeight="24">
+      <widgets xsi:type="model:Label" id="69" width="95" text="Last Build Time :" measuredWidth="95" measuredHeight="24">
+        <font size="11px"/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="75" x="94" width="108" text="2015-5-23 12:00:00" measuredWidth="108" measuredHeight="24">
+        <font size="11px"/>
+      </widgets>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="77" x="10" y="1" width="91" measuredWidth="90" measuredHeight="24">
+      <widgets xsi:type="model:Label" id="78" width="51" text="Project :" measuredWidth="51" measuredHeight="24">
+        <font size="11px"/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="79" x="50" width="40" text="Fund1" measuredWidth="40" measuredHeight="24">
+        <font size="11px"/>
+      </widgets>
+    </widgets>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

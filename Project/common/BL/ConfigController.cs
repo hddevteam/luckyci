@@ -39,6 +39,10 @@ namespace common.BL
             value.Add("UpdateInterval",configInfo.Updateinterval);
             value.Add("StandarOutput",configInfo.StandarOutput);
             value.Add("ServiceSwitch", configInfo.ServiceSwitch);
+            value.Add("ReportFrom",configInfo.ReportFrom);
+            value.Add("Password",configInfo.Password);
+            value.Add("MailHost",configInfo.SmtpServer);
+            value.Add("ReportTo",configInfo.ReportTo);
             try
             {
                 XmlDao xmlDao = new XmlDao();
@@ -65,6 +69,10 @@ namespace common.BL
             configInfo.Svnpath = "C:\\Program Files\\TortoiseSVN\\bin\\svn.exe";
             configInfo.StandarOutput = "true";
             configInfo.ServiceSwitch = "window";
+            configInfo.ReportFrom = "Demo_From@gmail.com";
+            configInfo.Password = "123456";
+            configInfo.ReportTo = "Demo_To@gmail.com";
+            configInfo.SmtpServer = "smtp.gmail.com";
             return configInfo;
         }
 
@@ -85,6 +93,10 @@ namespace common.BL
                 configInfo.Updateinterval = xmlNodeList[0].SelectSingleNode("UpdateInterval").InnerText;
                 configInfo.StandarOutput = xmlNodeList[0].SelectSingleNode("StandarOutput").InnerText;
                 configInfo.ServiceSwitch = xmlNodeList[0].SelectSingleNode("ServiceSwitch").InnerText;
+                configInfo.ReportFrom = xmlNodeList[0].SelectSingleNode("ReportFrom").InnerText;
+                configInfo.ReportTo = xmlNodeList[0].SelectSingleNode("ReportTo").InnerText;
+                configInfo.Password = xmlNodeList[0].SelectSingleNode("Password").InnerText;
+                configInfo.SmtpServer = xmlNodeList[0].SelectSingleNode("MailHost").InnerText;
                 return configInfo;
             }
             catch (Exception)
@@ -99,9 +111,33 @@ namespace common.BL
         /// <param name="xmlPath">存放对应表的xml文件路径</param>
         /// <returns></returns>
         public XmlNodeList AcquireSlackPeople(string nodePath, string xmlPath)
+        {                      
+                XmlDao dao = new XmlDao();
+                return dao.XmlQuery(nodePath, xmlPath);           
+        }
+        /// <summary>
+        /// 获取gitlab信息
+        /// </summary>
+        /// <param name="dataPath">节点路径</param>
+        /// <param name="xmlConfigPath">xml路径</param>
+        /// <returns></returns>
+        public GitInfo GitInfoQuery(string dataPath, string xmlConfigPath)
         {
-            XmlDao dao = new XmlDao();
-           return dao.XmlQuery( nodePath,xmlPath);
+            GitInfo gitlabInfo = new GitInfo();
+            XmlDao xmlDao = new XmlDao();
+            try
+            {
+                XmlNodeList xmlNodeList = xmlDao.XmlQuery(dataPath, xmlConfigPath);
+                gitlabInfo.Username = xmlNodeList[0].SelectSingleNode("Username").InnerText;
+                gitlabInfo.Password = xmlNodeList[0].SelectSingleNode("Password").InnerText;
+                gitlabInfo.Emailaddress = xmlNodeList[0].SelectSingleNode("Email").InnerText;
+                gitlabInfo.Gitreversion = xmlNodeList[0].SelectSingleNode("GitReversion").InnerText;
+                return gitlabInfo;
+            }
+            catch (Exception)
+            {
+                return gitlabInfo;
+            }
         }
     }
 }

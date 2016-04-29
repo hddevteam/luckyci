@@ -22,6 +22,12 @@ namespace common.DTO
         private string standarOutput;
         //选择运行方式
         private string serviceSwitch;
+
+        //周邮件发送配置
+        private string reportFrom;
+        private string password;
+        private string smtpServer;
+        private string reportTo;
         //---------------------------------------------------------
 
         //------------------ConfigInfo类的无参数构造方法---------------------------------------
@@ -31,6 +37,13 @@ namespace common.DTO
             this.updateInterval = "";
             this.mailFrom = "";
             this.mailPassword = "";
+            this.standarOutput = "";
+            this.serviceSwitch = "";
+            this.reportFrom = "";
+            this.reportTo = "";
+            this.password = "";
+            this.smtpServer = "";
+            
         }
         //---------------------------------------------------------
 
@@ -82,6 +95,58 @@ namespace common.DTO
             set
             {
                 serviceSwitch = value;
+            }
+        }
+
+        public string ReportFrom
+        {
+            get
+            {
+                return reportFrom;
+            }
+
+            set
+            {
+                reportFrom = value;
+            }
+        }
+
+        public string Password
+        {
+            get
+            {
+                return password;
+            }
+
+            set
+            {
+                password = value;
+            }
+        }
+
+        public string SmtpServer
+        {
+            get
+            {
+                return smtpServer;
+            }
+
+            set
+            {
+                smtpServer = value;
+            }
+        }
+
+        public string ReportTo
+        {
+            get
+            {
+                return reportTo;
+            }
+
+            set
+            {
+                reportTo = value;
             }
         }
         //---------------------------------------------------------

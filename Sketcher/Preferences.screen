@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Window" id="1" width="640" height="480" text="Lucky CI" measuredWidth="640" measuredHeight="480" minimizeButton="true" maximizeButton="true"/>
+  <widgets xsi:type="model:Menu" id="2" y="19" width="640" text="&amp;Main,&amp;File,&amp;Options,&amp;Help" measuredWidth="640" measuredHeight="30" selection="2">
+    <items link="Status.screen" x="5" y="0" width="40" height="30" text="&amp;Main"/>
+    <items link="ProjectAdd.screen" x="45" y="0" width="30" height="30" text="&amp;File"/>
+    <items x="75" y="0" width="57" height="30" text="&amp;Options"/>
+    <items x="132" y="0" width="38" height="30" text="&amp;Help"/>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="64" x="10" y="56" measuredWidth="620" measuredHeight="393">
+    <widgets xsi:type="model:Group" id="3" width="620" height="393" text="Perferences" measuredWidth="620" measuredHeight="393">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="4" x="30" y="40" measuredWidth="465" measuredHeight="27">
+      <widgets xsi:type="model:TextField" id="5" x="120" y="1" width="273" text="C:/svn" measuredWidth="273" measuredHeight="25">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="6" y="1" text="svn.exe path :" measuredWidth="85" measuredHeight="25">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Button" id="7" x="408" width="57" text="浏览" measuredWidth="57" measuredHeight="27">
+        <font/>
+      </widgets>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="24" x="150" y="344" measuredWidth="438" measuredHeight="27">
+      <widgets xsi:type="model:Button" id="25" width="67" text="应用" measuredWidth="67" measuredHeight="27">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Button" id="26" x="336" width="102" text="恢复默认值" measuredWidth="102" measuredHeight="27">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Button" id="27" x="104" width="67" text="取消" measuredWidth="67" measuredHeight="27">
+        <font/>
+      </widgets>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="34" x="30" y="90" measuredWidth="204" measuredHeight="25">
+      <widgets xsi:type="model:Label" id="35" text="Update interval :" measuredWidth="102" measuredHeight="25">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Spinner" id="36" x="120" width="59" text="600" measuredWidth="59" measuredHeight="25">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="37" x="184" text="(s)" measuredWidth="20" measuredHeight="25">
+        <font/>
+      </widgets>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="38" x="30" y="140" measuredWidth="393" measuredHeight="25">
+      <widgets xsi:type="model:TextField" id="39" x="120" width="273" text="XXX@it.henu.edu.cn" measuredWidth="273" measuredHeight="25">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="40" text="Mail from :" measuredWidth="70" measuredHeight="25">
+        <font/>
+      </widgets>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="46" x="30" y="190" measuredWidth="393" measuredHeight="25">
+      <widgets xsi:type="model:TextField" id="47" x="120" width="273" text="***********" measuredWidth="273" measuredHeight="25">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="48" text="Password :" measuredWidth="69" measuredHeight="25">
+        <font/>
+      </widgets>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="50" y="455" measuredWidth="640" measuredHeight="25">
+    <widgets xsi:type="model:Panel" id="51" width="640" height="25" measuredWidth="640" measuredHeight="25"/>
+    <widgets xsi:type="model:WidgetGroup" id="52" x="128" y="1" width="101" measuredWidth="100" measuredHeight="24">
+      <widgets xsi:type="model:Label" id="53" width="85" text="Last CI Result :" measuredWidth="85" measuredHeight="24">
+        <font size="11px"/>
+      </widgets>
+      <widgets xsi:type="model:Icon" id="54" x="84" y="4" measuredWidth="16" measuredHeight="16" foreground="#6aa84f" icon="bullet (small)" iconRotation="270"/>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="55" x="485" y="1" width="144" measuredWidth="143" measuredHeight="24">
+      <widgets xsi:type="model:Label" id="56" width="117" text="Last Build Duration :" measuredWidth="117" measuredHeight="24">
+        <font size="11px"/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="57" x="116" width="27" text="20 s" measuredWidth="27" measuredHeight="24">
+        <font size="11px"/>
+      </widgets>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="58" x="255" y="1" width="203" measuredWidth="202" measuredHeight="24">
+      <widgets xsi:type="model:Label" id="59" width="95" text="Last Build Time :" measuredWidth="95" measuredHeight="24">
+        <font size="11px"/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="60" x="94" width="108" text="2015-5-23 12:00:00" measuredWidth="108" measuredHeight="24">
+        <font size="11px"/>
+      </widgets>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="61" x="10" y="1" width="91" measuredWidth="90" measuredHeight="24">
+      <widgets xsi:type="model:Label" id="62" width="51" text="Project :" measuredWidth="51" measuredHeight="24">
+        <font size="11px"/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="63" x="50" width="40" text="Fund1" measuredWidth="40" measuredHeight="24">
+        <font size="11px"/>
+      </widgets>
+    </widgets>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Window" id="1" width="640" height="480" text="Lucky CI" measuredWidth="640" measuredHeight="480" minimizeButton="true" maximizeButton="true"/>
+  <widgets xsi:type="model:Menu" id="2" y="19" width="640" text="&amp;Main,&amp;File,&amp;Options,&amp;Help" measuredWidth="640" measuredHeight="30" selection="0">
+    <items x="5" y="0" width="40" height="30" text="&amp;Main"/>
+    <items link="ProjectAdd.screen" x="45" y="0" width="30" height="30" text="&amp;File"/>
+    <items link="Preferences.screen" x="75" y="0" width="57" height="30" text="&amp;Options"/>
+    <items x="132" y="0" width="38" height="30" text="&amp;Help"/>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="80" x="472" y="56" measuredWidth="158" measuredHeight="393">
+    <widgets xsi:type="model:Group" id="50" width="158" height="393" text="Projects List" measuredWidth="158" measuredHeight="393">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:List" id="51" x="10" y="24" width="137" text="Fund1&#xA;Fund2&#xA;Fund3" measuredWidth="137" measuredHeight="73" selection="0" horizontalLines="true">
+      <font/>
+      <items x="0" y="2" width="137" height="23" text="Fund1"/>
+      <items x="0" y="25" width="137" height="23" text="Fund2"/>
+      <items x="0" y="48" width="137" height="23" text="Fund3"/>
+    </widgets>
+    <widgets xsi:type="model:Group" id="81" x="10" y="248" width="138" height="135" text="Status" measuredWidth="138" measuredHeight="135">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Icon" id="83" x="20" y="272" width="25" height="27" measuredWidth="25" measuredHeight="27" icon="bullet (small)"/>
+    <widgets xsi:type="model:Label" id="85" x="48" y="273" text="service stop" measuredWidth="76" measuredHeight="25" layoutParams="anchor-center|anchor-middle">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="86" x="15" y="328" text="on" measuredWidth="35" measuredHeight="27">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="87" x="53" y="328" text="off" measuredWidth="36" measuredHeight="27">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="88" x="93" y="328" text="reset" measuredWidth="49" measuredHeight="27">
+      <font/>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="79" x="10" y="56" measuredWidth="449" measuredHeight="393">
+    <widgets xsi:type="model:WidgetGroup" id="31" height="393" measuredWidth="449" measuredHeight="393">
+      <widgets xsi:type="model:Group" id="5" width="449" height="393" text="Details logs" measuredWidth="449" measuredHeight="393">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:VScrollbar" id="11" x="431" y="13" height="377" measuredWidth="17" measuredHeight="377" value="100"/>
+    </widgets>
+    <widgets xsi:type="model:Text" id="10" x="10" y="21" width="413" height="362" text="Running command: E:\myProjects\fund\platforms\android\cordova\run.bat&#xA;ANDROID_HOME=C:\Program Files (x86)\Android\android-sdk&#xA;JAVA_HOME=C:\Program Files (x86)\Java\jdk1.7.0_55&#xA;&#xA;E:\myProjects\fund\platforms\android\cordova\node_modules\q\q.js:126&#xA;                    throw e;&#xA;                          ^&#xA;Error executing &quot;adb devices&quot;: error:&#xA;ERROR running one or more of the platforms: Error: &#xA;&#xA;" measuredWidth="413" measuredHeight="362">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Note" id="56" x="30" y="265" height="29" text="近几天所有项目运行结果信息" measuredWidth="173" measuredHeight="29">
+      <font/>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:Icon" id="60" x="598" y="86" width="16" height="16" measuredWidth="16" measuredHeight="16" foreground="#6aa84f" icon="bullet (small)" iconRotation="270"/>
+  <widgets xsi:type="model:Icon" id="61" x="598" y="109" width="16" height="16" measuredWidth="16" measuredHeight="16" foreground="#f1c232" icon="bullet (small)"/>
+  <widgets xsi:type="model:Icon" id="62" x="598" y="132" width="16" height="16" measuredWidth="16" measuredHeight="16" foreground="#cc0000" icon="bullet (small)"/>
+  <widgets xsi:type="model:WidgetGroup" id="64" y="455" measuredWidth="640" measuredHeight="25">
+    <widgets xsi:type="model:Panel" id="65" width="640" height="25" measuredWidth="640" measuredHeight="25"/>
+    <widgets xsi:type="model:WidgetGroup" id="66" x="128" y="1" width="101" measuredWidth="100" measuredHeight="24">
+      <widgets xsi:type="model:Label" id="67" width="85" text="Last CI Result :" measuredWidth="85" measuredHeight="24">
+        <font size="11px"/>
+      </widgets>
+      <widgets xsi:type="model:Icon" id="68" x="84" y="4" measuredWidth="16" measuredHeight="16" foreground="#6aa84f" icon="bullet (small)" iconRotation="270"/>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="69" x="485" y="1" width="144" measuredWidth="143" measuredHeight="24">
+      <widgets xsi:type="model:Label" id="70" width="117" text="Last Build Duration :" measuredWidth="117" measuredHeight="24">
+        <font size="11px"/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="71" x="116" width="27" text="20 s" measuredWidth="27" measuredHeight="24">
+        <font size="11px"/>
+      </widgets>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="72" x="255" y="1" width="203" measuredWidth="202" measuredHeight="24">
+      <widgets xsi:type="model:Label" id="73" width="95" text="Last Build Time :" measuredWidth="95" measuredHeight="24">
+        <font size="11px"/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="74" x="94" width="108" text="2015-5-23 12:00:00" measuredWidth="108" measuredHeight="24">
+        <font size="11px"/>
+      </widgets>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="75" x="10" y="1" width="91" measuredWidth="90" measuredHeight="24">
+      <widgets xsi:type="model:Label" id="76" width="51" text="Project :" measuredWidth="51" measuredHeight="24">
+        <font size="11px"/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="77" x="50" width="40" text="Fund1" measuredWidth="40" measuredHeight="24">
+        <font size="11px"/>
+      </widgets>
+    </widgets>
+  </widgets>
+  <hRuler>
+    <guides position="613"/>
+    <guides position="521"/>
+  </hRuler>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>
