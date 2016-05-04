@@ -28,82 +28,20 @@ namespace LuckyCIPost.Controller
         public string PostInfoFunction([FromBody]PostInfo postInfo)
         {
             string config = System.AppDomain.CurrentDomain.BaseDirectory;          
-            //try
-            //{
-            //    int local1 = config.LastIndexOf("\\");
-            //    string parent1 = config.Substring(0, local1 - 12);
-            //    //配置信息路径
-            //    string CIConfigPath1 = parent1 + "\\common\\res\\CIconfig.xml";
-     
-            //    FileStream fs = new FileStream(parent1 + "\\common\\res\\log.txt", FileMode.Append, FileAccess.Write);
-            //    StreamWriter sw = new StreamWriter(fs); // 创建写入流
-            //    string outputLog = CIConfigPath1 + "\n";
-            //    sw.WriteLine(outputLog); // 写入
-            //    sw.Close(); //关闭文件
-            //}
-            //catch (Exception e)
-            //{
-            //    FileStream fs = new FileStream(config + "log.txt", FileMode.Append, FileAccess.Write);
-            //    StreamWriter sw = new StreamWriter(fs); // 创建写入流
-            //    string outputLog = e.ToString();
-            //    sw.WriteLine(outputLog); // 写入
-            //    sw.Close();
-            //}
-
-            //获取提交的分支
-            //string[] postRef = postInfo.@ref.Split('/');
-            //string pushBranch = postRef[2];
-            //int local = config.LastIndexOf("\\");
-            //string parent = config.Substring(0, local - 12);
-            ////配置信息路径
-            //string CIConfigPath = parent + "\\common\\res\\CIconfig.xml";
-            ////数据库路径
-            //string dbPath = parent + "\\common\\res\\CILog.mdb";
-            ////log日志路径
-            //string logPath = parent + "\\log\\log.txt";
-            ////邮件模板路径
-            //string mailPath = parent + "\\common\\SendMail.html";
-            //string mailWeekReportPath = parent + "\\common\\WeeklyReport.html";
-            ////获取config中项目的配置信息
-            //List<ProjectInfo> projectInfos = _projectController.ProjectQuery("/config/Projects", true,
-            //    CIConfigPath);
-
-
-            ////项目进行匹配，然后进行编译操作
-            //foreach (var projectInfo in projectInfos)
-            //{
-            //    if (projectInfo.Statusproperty == "true" && projectInfo.Nameproperty == postInfo.project.name)
-            //    {
-            //        //编译项目，并且对要存储的数据进行更新，赋值
-            //        ProjectInfo buildProjectInfo = buildProject(projectInfo,pushBranch,CIConfigPath);
-            //        buildProjectInfo.GitVersion = postInfo.after;
-            //        buildProjectInfo.Author = postInfo.user_name;
-            //        buildProjectInfo.Branch = postInfo.@ref;
-            //        //存储信息到数据库当中mongodb
-            //        SaveInfoToDataBase(buildProjectInfo,dbPath,logPath);
-
-
-            //        ConfigInfo configInfo = _configController.ConfigQuery("config/preferences", CIConfigPath);
-            //        SendMailSlack sendInfo = new SendMailSlack(buildProjectInfo,mailPath, CIConfigPath, dbPath,configInfo, mailWeekReportPath);
-            //        sendInfo.SendMail();
-            //        sendInfo.SendSlack();
-            //        //sendInfo.SendWeeklyReportFromMongodb();
-            //        break;
-            //    }
-            //}
+           
 
             var factory = new ConnectionFactory();
             factory.HostName = "localhost";
-            factory.UserName = "ccy";
-            factory.Password = "cuichongyang_123";
+            factory.UserName = "guest";//默认的账号
+            factory.Password = "guest";//默认的密码
              using (var connection = factory.CreateConnection())
             {
                 using (var channel = connection.CreateModel())
                 {
-                    channel.QueueDeclare("CIQueues", false, false, false, null);
+                    channel.QueueDeclare("CIQueues_newframework", false, false, false, null);
                     var sendMessage = "ProjectName:" + postInfo.project.name + ";CommitVerson:" + postInfo.after + ";Submitter:" + postInfo.user_name + ";pushBranch:" + postInfo.@ref;
                     var body = Encoding.UTF8.GetBytes(sendMessage);
-                    channel.BasicPublish("", "CIQueues", null, body);
+                    channel.BasicPublish("", "CIQueues_newframework", null, body);
                 }
             }
             return "successful";

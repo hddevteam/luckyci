@@ -18,6 +18,8 @@ using System.Text;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using common.DAO;
+using System.Runtime.Serialization.Json;
+using System.IO;
 
 namespace LuckyCIService
 {
@@ -78,25 +80,6 @@ namespace LuckyCIService
                 //发送一周总结报告邮件
                 SendMailSlack sendReportMail = new SendMailSlack(null, null, null, null, configInfo, mailWeekReportPath);
                 bool sendSuccess = sendReportMail.SendWeeklyReportFromMongodb();
-
-                //进行数据清空
-
-                ////进行成员数据清空
-                //_projectController.ClearTimesAfterSendReport("config/Member", parent + "\\common\\res\\InfoStatics.xml", null, null);
-                ////Dictionary<string, string> clearMemberZero = new Dictionary<string, string>();
-                ////clearMemberZero.Add("Week", "0");
-                ////clearMemberZero.Add("Success", "0");
-                ////clearMemberZero.Add("Failure", "0");
-                ////_projectController.ClearTimesAfterSendReport("config/Member", parent + "\\common\\res\\InfoStatics.xml", clearMemberZero, "memberTimes");
-                ////进行总提交次数清空
-                //Dictionary<string, string> clearWeekTotalZero = new Dictionary<string, string>();
-                //clearWeekTotalZero.Add("CommitTimes", "0");
-                //clearWeekTotalZero.Add("BuildTimes", "0");
-                //clearWeekTotalZero.Add("BuildSuccessTimes", "0");
-                //clearWeekTotalZero.Add("BuildFailedTimes", "0");
-                //_projectController.ClearTimesAfterSendReport("config/WeekTotal", parent + "\\common\\res\\InfoStatics.xml", clearWeekTotalZero, "totalTimes");
-                ////projects进行清空
-                //_projectController.ClearTimesAfterSendReport("config/Projects", parent + "\\common\\res\\InfoStatics.xml", null, null);
             }
         }
 
@@ -105,19 +88,20 @@ namespace LuckyCIService
         {
             var factory = new ConnectionFactory();
             factory.HostName = "localhost";
-            factory.UserName = "ccy";
-            factory.Password = "cuichongyang_123";
-
-            using (var connection = factory.CreateConnection())
+            factory.UserName = "guest";
+            factory.Password = "guest";
+            ProjectInfo buildProjectInfo = new ProjectInfo();
+            while (true)
+            {
+                using (var connection = factory.CreateConnection())
             {
                 using (var channel = connection.CreateModel())
                 {
-                    channel.QueueDeclare("CIQueues", false, false, false, null);
+                    channel.QueueDeclare("CIQueues_newframework", false, false, false, null);
 
                     var consumer = new QueueingBasicConsumer(channel);
-                    channel.BasicConsume("CIQueues", true, consumer);
-                    while (true)
-                    {
+                    channel.BasicConsume("CIQueues_newframework", false, consumer);
+                   
                         var ea = (BasicDeliverEventArgs)consumer.Queue.Dequeue();
                         var body = ea.Body;
                         var message = Encoding.UTF8.GetString(body);
@@ -126,258 +110,36 @@ namespace LuckyCIService
                         string projectCommitVersion = messageSplit[1].Split(':')[1];
                         string projectSubmitter = messageSplit[2].Split(':')[1];
                         string projectPushBranch = messageSplit[3].Split(':')[1].Split('/')[2];
-                        //对项目进行处理（编译存储，发邮件等）
-                        HandleProject(projectName, projectCommitVersion, projectPushBranch, projectSubmitter);
+                        //对项目进行编译
+                       buildProjectInfo=HandleProject(projectName, projectCommitVersion, projectPushBranch, projectSubmitter);
+                        channel.BasicAck(ea.DeliveryTag, false);
+                    }
+                }
+
+                //对象转化为json格式的数据
+                DataContractJsonSerializer serializer = new DataContractJsonSerializer(buildProjectInfo.GetType());
+                MemoryStream stream = new MemoryStream();
+                serializer.WriteObject(stream, buildProjectInfo);
+                byte[] dataBytes = new byte[stream.Length];
+                stream.Position = 0;
+                stream.Read(dataBytes, 0, (int)stream.Length);
+                var factory_push = new ConnectionFactory();
+                factory_push.HostName = "localhost";
+                factory_push.UserName = "guest";
+                factory_push.Password = "guest";
+                using (var connection = factory_push.CreateConnection())
+                {
+                    using (var channel = connection.CreateModel())
+                    {
+                        channel.QueueDeclare("BuildResultInfo", false, false, false, null);
+                        var body = Encoding.UTF8.GetBytes(Encoding.UTF8.GetString(dataBytes));
+                        channel.BasicPublish("", "BuildResultInfo", null, body);
                     }
                 }
             }
-
-
-            //string config = System.AppDomain.CurrentDomain.BaseDirectory;
-            //int p = config.LastIndexOf("\\");
-            //string parent = config.Substring(0, p - 25);
-            //string xmlPath = parent + "\\common\\res\\CIconfig.xml";
-            //string buildXmlPath = parent + "\\common\\res\\BuildResultLogs.xml";
-            //string lastXmlPath = parent + "\\common\\res\\LastestInfo.xml";
-            //infoStatXmlPath = parent + "\\common\\res\\InfoStatics.xml";
-            //string mailPath = parent + "\\common\\SendMail.html";
-            //string mailWeekReportPath = parent + "\\common\\WeeklyReport.html";
-            //string dbPath = parent + "\\common\\res\\CILog.mdb";
-            //string logPath = parent + "\\log\\log.txt";
-
-            //List<ProjectInfo> projectInfos = _projectController.ProjectQuery("/config/Projects", true,
-            //    xmlPath);
-            //List<ProjectInfo> lastResults = _projectController.ReadLog("/config/Projects", buildXmlPath);
-
-            ////测试代码
-            ////Thread.Sleep(30000);
-
-
-            //foreach (var projectInfo in projectInfos)
-            //{
-            //    if (projectInfo.Statusproperty == "true")
-            //    {
-            //        //保存修改前的版本以便回滚
-            //        ProjectInfo lastestInfo = _projectController.ProjectQuery("config/lastest", false,
-            //            lastXmlPath).First();
-            //        //将当前运行项目及运行状态存储
-            //        Dictionary<string, string> startValue = new Dictionary<string, string>();
-            //        startValue.Add("projectName", projectInfo.Nameproperty);
-            //        startValue.Add("result", "running");
-            //        _projectController.ModifyProject(startValue, null, lastXmlPath, "lastest");
-            //        //更新项目,若版本号未变则无需编译否则编译
-            //        Boolean updateResult = true;
-            //        //svn项目
-            //        if (projectInfo.ProjectType == "svn")
-            //        {
-            //            string newVersion = "";
-            //            updateResult = UpdateProject(projectInfo, xmlPath, buildXmlPath,out newVersion);
-            //            if (updateResult==false) {
-            //                //储存本次版本号
-            //                Dictionary<string, string> newGitReversion = new Dictionary<string, string>();
-            //                Dictionary<string, string> property = new Dictionary<string, string>();
-            //                newGitReversion.Add("GitVersion", newVersion);
-            //                property.Add("Name", projectInfo.Nameproperty);
-            //                _projectController.ModifyProject(newGitReversion, property, xmlPath, "Projects");
-            //                ProjectInfo projectInfoGetLocal = _svnController.GetLocalInfo(projectInfo);
-            //                projectInfo.Author = projectInfoGetLocal.Author.Split('\\')[1];
-            //                projectInfo.GitVersion = newVersion;
-            //            }
-            //        }
-            //        //git项目
-            //        if (projectInfo.ProjectType == "git")
-            //        {
-            //            //获取gitlab信息
-            //            GitInfo gitlabInfo = _configController.GitInfoQuery("config/GitLabInfo", xmlPath);
-
-            //            Boolean gitPullResult = _gitlabController.Libgit2_GitPull(projectInfo.WorkDirectory, gitlabInfo.Username, gitlabInfo.Password, gitlabInfo.Emailaddress);
-            //            if (gitPullResult)
-            //            {
-            //                string gitReversion = _gitlabController.libgit2_GitLog(projectInfo.WorkDirectory);
-            //                if (projectInfo.GitVersion == gitReversion) { }
-            //                else
-            //                {
-            //                    projectInfo.GitVersion = gitReversion;
-            //                    updateResult = false;
-            //                    //储存本次版本号
-            //                    Dictionary<string, string> newGitReversion = new Dictionary<string, string>();
-            //                    Dictionary<string, string> property = new Dictionary<string, string>();
-            //                    newGitReversion.Add("GitVersion", gitReversion);
-            //                    property.Add("Name", projectInfo.Nameproperty);
-            //                    _projectController.ModifyProject(newGitReversion, property, xmlPath, "Projects");
-            //                    string gitlabLastAuthor = _gitlabController.GirLogFundAuthor(projectInfo.WorkDirectory).Trim();
-            //                    projectInfo.Author = gitlabLastAuthor;
-            //                }
-            //            }
-            //        }
-            //        //测试语句
-            //        //if (false)
-            //        if (updateResult)
-            //        {
-            //            Dictionary<string, string> revertLastInfo = new Dictionary<string, string>();
-            //            revertLastInfo.Add("projectName", lastestInfo.Nameproperty);
-            //            revertLastInfo.Add("result", lastestInfo.Result);
-            //            _projectController.ModifyProject(revertLastInfo, null,
-            //                lastXmlPath, "lastest");
-            //        }
-            //        else
-            //        {
-            //            //发送更新信息
-            //            //获取上次提交者名字
-
-            //            //ProjectInfo projectInfoGetLocal = _svnController.GetLocalInfo(projectInfo);
-            //            //projectInfoGetLocal.Revision = _latestRevision;
-
-            //            //检查提交过信息的人员名单中是否有此author
-            //            //若是有则进行加一处理
-            //            //若是没有则进行创建，然后加一
-            //            //List<ProjectInfo> infoStaticName = _projectController.ProjectQuery("/config/Member", true, infoStatXmlPath);
-            //            //bool notCommitName = true;
-            //            //foreach (ProjectInfo commitName in infoStaticName)
-            //            //{
-            //            //    if (commitName.Nameproperty == projectInfo.Author)
-            //            //    {
-            //            //        notCommitName = false;
-            //            //        break;
-            //            //    }
-            //            //}
-            //            //if (infoStaticName.Count == 0 || notCommitName)
-            //            //{
-            //            //    var memberChildNodes = new Dictionary<string, string>();
-            //            //    var memberProperty = new Dictionary<string, string>();
-            //            //    memberChildNodes.Add("Week", "0");
-            //            //    memberChildNodes.Add("Success", "0");
-            //            //    memberChildNodes.Add("Failure", "0");
-            //            //    memberProperty.Add("Name", projectInfo.Author);
-            //            //    _projectController.AddMember(memberChildNodes, memberProperty, infoStatXmlPath);
-            //            //}
-
-            //            //Dictionary<string, string> setValue = new Dictionary<string, string>();
-            //            //setValue.Add("Name", projectInfo.Author);
-            //            //_projectController.CommitStat("update", setValue, "config/Member", infoStatXmlPath);
-
-            //            ////检查infoStatics文件夹中有没有提交的项目，若是有则进行相对应的节点数值加1处理，若是没有，则进行创建，并进行初始化
-            //            //List<ProjectInfo> checkProjectInfos = _projectController.ProjectQuery("/config/Projects", true, infoStatXmlPath);
-            //            ////进行创建
-            //            //bool whetherCreateAtInfoStatics = true;
-            //            //foreach (ProjectInfo proName in checkProjectInfos)
-            //            //{
-            //            //    if (proName.Nameproperty == projectInfo.Nameproperty)
-            //            //    {
-            //            //        whetherCreateAtInfoStatics = false;
-            //            //        break;
-            //            //    }
-            //            //}
-            //            //if (checkProjectInfos.Count == 0 || whetherCreateAtInfoStatics)
-            //            //{
-            //            //    var childNodes = new Dictionary<string, string>();
-            //            //    var property = new Dictionary<string, string>();
-            //            //    childNodes.Add("Commit", "1");
-            //            //    childNodes.Add("Build", "0");
-            //            //    childNodes.Add("Success", "0");
-            //            //    childNodes.Add("Failed", "0");
-            //            //    property.Add("Name", projectInfo.Nameproperty);
-            //            //    _projectController.AddProject(childNodes, property, infoStatXmlPath);
-            //            //}
-            //            ////进行加1处理
-            //            //else
-            //            //{
-            //            //    Dictionary<string, string> projectName = new Dictionary<string, string>();
-            //            //    projectName.Add("Name", projectInfo.Nameproperty);
-            //            //    _projectController.CommitStat("projectsCommit", projectName, "config/Projects", infoStatXmlPath);
-            //            //}
-
-            //            //将更新记录记入统计
-            //            //Dictionary<string, string> setUpdateValue = new Dictionary<string, string>();
-            //            //setUpdateValue.Add("Name", projectInfoGetLocal.Author.Split('\\')[1]);
-            //            //_projectController.CommitStat("update", setUpdateValue, "config/Member", infoStatXmlPath);
-            //            //SendMailSlack sendMailSlack = new SendMailSlack(projectInfoGetLocal, null, updateLog, xmlPath, infoStatXmlPath);
-            //            //Thread sendLogMessage = new Thread(sendMailSlack.SendLogMessage);
-            //            //sendLogMessage.Start();
-            //            //编译项目                                                                       
-            //            ProjectInfo buildFinishedInfo = BuildProject(projectInfo, xmlPath);
-            //            //存储编译信息
-            //            //SaveInfo(buildFinishedInfo, buildXmlPath, lastXmlPath);
-            //            SaveInfoToDataBase(buildFinishedInfo,dbPath,logPath);
-            //            //if (buildFinishedInfo.Result == "successful")
-            //            //{
-            //            //    _projectController.CommitStat("success", setValue, "config/Member", infoStatXmlPath);
-            //            //    Dictionary<string, string> projectName = new Dictionary<string, string>();
-            //            //    projectName.Add("Name", projectInfo.Nameproperty);
-            //            //    _projectController.CommitStat("projectSuccess", projectName, "config/Projects", infoStatXmlPath);
-            //            //}
-            //            //else if (buildFinishedInfo.Result == "failed")
-            //            //{
-            //            //    _projectController.CommitStat("failure", setValue, "config/Member", infoStatXmlPath);
-            //            //    Dictionary<string, string> projectName = new Dictionary<string, string>();
-            //            //    projectName.Add("Name", projectInfo.Nameproperty);
-            //            //    _projectController.CommitStat("projectFailed", projectName, "config/Projects", infoStatXmlPath);
-            //            //}
-            //            //先从本地svn完善项目信息后自动发送邮件
-            //            // ProjectInfo projectInfoGetLocal = _svnController.GetLocalInfo(buildFinishedInfo);
-            //            SendSlackMail(buildFinishedInfo, mailPath, xmlPath);
-            //        }
-            //    }
-            //}
-            //XmlNodeList xmlNodeLost = _configController.FindConfigInfo("/config/preferences/UpdateInterval", xmlPath);
-            //int updateInterval = int.Parse(xmlNodeLost[0].InnerText);
-            //Thread.Sleep(updateInterval * 60000);
-            //Thread t = new Thread(fun);
-            //t.Start();
+         
         }
 
-        /// <summary>
-        /// 执行编译项目的操作
-        /// </summary>
-        /// <param name="projectInfo">当前编译的项目</param>
-        /// <returns></returns>
-        //private ProjectInfo BuildProject(ProjectInfo projectInfo, string xmlPath)
-        //{
-        //    string buildResult; //存储编译是否成功
-        //    string error; //存储编译的日志文件
-        //    string log; //存储编译的所有信息
-        //    string time;
-        //    ConfigInfo configInfo = _configController.ConfigQuery("config/preferences",
-        //        xmlPath);
-        //    projectInfo.BuildTime = DateTime.Now.ToString();
-        //    projectInfo.StartTime = DateTime.Now.ToString();
-        //    if (projectInfo.Nameproperty == "LuckyCI") { projectInfo.WorkDirectory += "\\Project"; }
-
-        //    log = _projectController.Build(projectInfo.BuildCommand, projectInfo.WorkDirectory,
-        //        out buildResult, out error, out time);
-        //    //projectInfo.Duration = Regex.Match(log, "(?<=Total time:).*?(?=secs)").Value == ""
-        //    //    ? ""
-        //    //    : (Regex.Match(log, "(?<=Total time:).*?(?=secs)").Value + " secs");
-        //    projectInfo.Duration = time;
-        //    projectInfo.EndTime = DateTime.Now.ToString();
-        //    projectInfo.Revision = _latestRevision;
-        //    projectInfo.Log = (configInfo.StandarOutput == "true")
-        //        ? ("\n" + log + "\n" + error)
-        //        : ("\n" + error);
-        //    projectInfo.Result = buildResult;
-        //    return projectInfo;
-        //}
-
-        ///// <summary>
-        ///// 存储编译的信息
-        ///// </summary>
-        ///// <param name="projectInfo">当前编译的项目</param>
-        //private void SaveInfo(ProjectInfo projectInfo, string buildXmlPath, string lastXmlpath)
-        //{
-        //    Dictionary<string, string> lastProject = new Dictionary<string, string>();
-        //    Dictionary<string, string> property = new Dictionary<string, string>();
-        //    property.Add("Name", projectInfo.Nameproperty);
-        //    //累加Log,存储在新的Log节点并执行添加属性的操作
-        //    _projectController.SaveLog(projectInfo, property,
-        //        buildXmlPath, "Projects");
-        //    //修改存储最近完成项目信息的xml文件
-        //    lastProject.Add("projectName", projectInfo.Nameproperty);
-        //    lastProject.Add("buildTime", projectInfo.BuildTime);
-        //    lastProject.Add("duration", projectInfo.Duration);
-        //    lastProject.Add("result", projectInfo.Result);
-        //    _projectController.ModifyProject(lastProject, null,
-        //        lastXmlpath, "lastest");
-        //}
 
         /// <summary>
         /// 存储log信息到数据库
@@ -460,7 +222,8 @@ namespace LuckyCIService
         protected override void OnStop()
         {
         }
-        public string HandleProject(string projectName,string projectCommitVersion,string projectPushBranch,string projectSubmitter) {
+        public ProjectInfo HandleProject(string projectName,string projectCommitVersion,string projectPushBranch,string projectSubmitter) {
+            ProjectInfo buildProjectInfo = new ProjectInfo();
             string config = System.AppDomain.CurrentDomain.BaseDirectory;
             int p = config.LastIndexOf("\\");
             string parent = config.Substring(0, p - 25);
@@ -478,21 +241,25 @@ namespace LuckyCIService
                 if (projectInfo.Statusproperty == "true" && projectInfo.Nameproperty == projectName)
                 {
                     //编译项目，并且对要存储的数据进行更新，赋值
-                    ProjectInfo buildProjectInfo = buildProject(projectInfo, projectPushBranch, CIConfigPath);
+                    buildProjectInfo = buildProject(projectInfo, projectPushBranch, CIConfigPath);
                     buildProjectInfo.GitVersion = projectCommitVersion;
                     buildProjectInfo.Author = projectSubmitter;
                     buildProjectInfo.Branch = projectPushBranch;
-                    //存储信息到数据库当中mongodb
-                    SaveInfoToDataBase(buildProjectInfo, dbPath, logPath);
-                    ConfigInfo configInfo = _configController.ConfigQuery("config/preferences", CIConfigPath);
-                    SendMailSlack sendInfo = new SendMailSlack(buildProjectInfo, mailPath, CIConfigPath, dbPath, configInfo, mailWeekReportPath);
-                    sendInfo.SendMail();
-                    sendInfo.SendSlack();
-                    //sendInfo.SendWeeklyReportFromMongodb();
+                    //存储信息到数据库当中mongodb            
+                    //SaveInfoToDataBase(buildProjectInfo, dbPath, logPath);
+                    //ConfigInfo configInfo = _configController.ConfigQuery("config/preferences", CIConfigPath);
+                    //SendMailSlack sendInfo = new SendMailSlack(buildProjectInfo, mailPath, CIConfigPath, dbPath, configInfo, mailWeekReportPath);
+                    //sendInfo.SendMail();
+                    //sendInfo.SendSlack();
+
+
+
+
+
                     break;
                 }
             }
-            return "successful";
+            return buildProjectInfo;
 
         }
 
@@ -527,6 +294,7 @@ namespace LuckyCIService
                     projectInfo.StartTime = DateTime.Now.ToString();
                     if (projectInfo.Nameproperty == "LuckyCI") { projectInfo.WorkDirectory += "\\Project"; }
                     if (projectInfo.Nameproperty == "fundbook.rn") { projectInfo.WorkDirectory += "\\android"; }
+                    if (projectInfo.Nameproperty == "FirstProject") { projectInfo.WorkDirectory += "\\android"; }
                     log = _projectController.Build(projectInfo.BuildCommand, projectInfo.WorkDirectory,
            out buildResult, out error, out time);
                     projectInfo.Duration = time;

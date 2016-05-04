@@ -5,142 +5,27 @@
     <SvnPath>C:\Program Files\TortoiseSVN\bin\svn.exe</SvnPath>
     <StandarOutput>false</StandarOutput>
     <ServiceSwitch>service</ServiceSwitch>
-    <ReportFrom>jxm@it.henu.edu.cn</ReportFrom>
+    <ReportFrom>demo@gmail.com</ReportFrom>
     <Password></Password>
-    <MailHost>exch.henu.edu.cn</MailHost>
-    <ReportTo>svn-notify@it.henu.edu.cn</ReportTo>
+    <MailHost>demo</MailHost>
+    <ReportTo>demo@gmail.com</ReportTo>
   </preferences>
-  <SlackPeople>
-    <People Name="ccy">cuichongyang</People>
-    <People Name="dy">dongyu</People>
-    <People Name="jxm">jiaxiaoming</People>
-    <People Name="zys">zhangyanshi</People>
-    <People Name="lfq">lifuqiang</People>
-    <People Name="zpp">zhangpanpan</People>
-  </SlackPeople>
-  <MailPeople>
-    <People Name="cuichongyang">ccy</People>
-    <People Name="dongyu">dy</People>
-    <People Name="Xiaoming Jia">jxm</People>
-    <People Name="zhangyanshi">zys</People>
-    <People Name="lifuqiang">lfq</People>
-    <People Name="zhangpanpan">zpp</People>
-  </MailPeople>
+  
   <GitLabInfo>
-    <Username>ccy</Username>
-    <Password>cuichongyang_13462420045</Password>
-    <Email>ccy@it.henu.edu.cn</Email>
-    <GitReversion>252282b34e43b32a8e5d04c06763ad466982459b</GitReversion>
+    <Username></Username>
+    <Password></Password>
+    <Email></Email>
+    <GitReversion></GitReversion>
   </GitLabInfo>
-  <Projects Name="BabyCare" Status="true">
-    <RepositoryPath>http://gitlab.henu.edu.cn/android/BabyCare.git</RepositoryPath>
-    <WorkingDirectory>C:\LuckyCI\ConfigProjects\BabyCare</WorkingDirectory>
-    <MailTo>svn-notify@it.henu.edu.cn</MailTo>
-    <BuildCommand>gradlew :babycareplus:clean :babycareplus:assembleDebug</BuildCommand>
-    <IfSlack>true</IfSlack>
-    <IfMail>true</IfMail>
-    <SlackUrl>https://hooks.slack.com/services/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</SlackUrl>
-    <SlackChannel>#babycare</SlackChannel>
-    <MailHost>exch.henu.edu.cn</MailHost>
-    <UserName>#author#@it.henu.edu.cn</UserName>
-    <Password></Password>
-    <SlackUser>#author#</SlackUser>
-    <SlackContent>#smile:smiling_imp#projectName#revision versionNum#build successful,:build failed,#cost buildtime.#</SlackContent>
-    <SlackResult>true</SlackResult>
-    <SlackUpdate>true</SlackUpdate>
-    <SlackCommit>true</SlackCommit>
-    <GitVersion>e787f6a9ba1fa6e40113628b0ad74fa98715ee27</GitVersion>
-    <ProjectType>git</ProjectType>
-  </Projects>
-  <Projects Name="LuckyCI" Status="true">
-    <RepositoryPath>http://gitlab.henu.edu.cn/dotnet/LuckyCI.git</RepositoryPath>
-    <WorkingDirectory>C:\LuckyCI\ConfigProjects\LuckyCI</WorkingDirectory>
-    <MailTo>svn-notify@it.henu.edu.cn</MailTo>
-    <BuildCommand>C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild</BuildCommand>
-    <IfSlack>true</IfSlack>
-    <IfMail>true</IfMail>
-    <SlackUrl>https://hooks.slack.com/services/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</SlackUrl>
-    <SlackChannel>#luckyci</SlackChannel>
-    <MailHost>exch.henu.edu.cn</MailHost>
-    <UserName>#author#@it.henu.edu.cn</UserName>
-    <Password></Password>
-    <SlackUser>#author#</SlackUser>
-    <SlackContent>#smile:smiling_imp#projectName#revision versionNum#build successful,:build failed,#cost buildtime.#</SlackContent>
-    <SlackResult>true</SlackResult>
-    <SlackUpdate>true</SlackUpdate>
-    <SlackCommit>true</SlackCommit>
-    <GitVersion>48299e9251eb31be44eaf6be019134326c0cf275</GitVersion>
-    <ProjectType>git</ProjectType>
-  </Projects>
-  <Projects Name="Timers4Me" Status="true">
-    <RepositoryPath>http://gitlab.henu.edu.cn/android/Timers4Me.git</RepositoryPath>
-    <WorkingDirectory>C:\LuckyCI\ConfigProjects\Timers4Me</WorkingDirectory>
-    <MailTo>svn-notify@it.henu.edu.cn</MailTo>
-    <BuildCommand>gradlew :timers4me:clean :timers4meplus:clean :ultimata:clean :timers4me:assembleDebug :timers4meplus:assembleDebug :ultimata:assembleDebug</BuildCommand>
-    <IfSlack>true</IfSlack>
-    <IfMail>true</IfMail>
-    <SlackUrl>https://hooks.slack.com/services/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</SlackUrl>
-    <SlackChannel>#timers4me</SlackChannel>
-    <MailHost>exch.henu.edu.cn</MailHost>
-    <UserName>#author#@it.henu.edu.cn</UserName>
-    <Password></Password>
-    <SlackUser>#author#</SlackUser>
-    <SlackContent>#smile:smiling_imp#projectName#revision versionNum#build successful,:build failed,#cost buildtime.#</SlackContent>
-    <SlackResult>true</SlackResult>
-    <SlackUpdate>true</SlackUpdate>
-    <SlackCommit>true</SlackCommit>
-    <GitVersion>3d16f83eacfd8d715b213fbf26bffc73f8e7445a</GitVersion>
-    <ProjectType>git</ProjectType>
-  </Projects>
-  <Projects Name="luciddreamalarm" Status="true">
-    <RepositoryPath>http://gitlab.henu.edu.cn/android/luciddreamalarm.git</RepositoryPath>
-    <WorkingDirectory>C:\LuckyCI\ConfigProjects\luciddreamalarm</WorkingDirectory>
-    <MailTo>svn-notify@it.henu.edu.cn</MailTo>
+  <Projects Name="DemoProject" Status="true">
+    <RepositoryPath></RepositoryPath>
+    <WorkingDirectory>C:\LuckyCI\ConfigProjects\FirstProject</WorkingDirectory>
+    <MailTo>Demo@gmail.com</MailTo>
     <BuildCommand>gradlew assembleDebug</BuildCommand>
     <IfSlack>true</IfSlack>
     <IfMail>true</IfMail>
-    <SlackUrl>https://hooks.slack.com/services/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</SlackUrl>
-    <SlackChannel>#luciddreamalarm</SlackChannel>
-    <MailHost>exch.henu.edu.cn</MailHost>
-    <UserName>#author#@it.henu.edu.cn</UserName>
-    <Password></Password>
-    <SlackUser>#author#</SlackUser>
-    <SlackContent>#smile:smiling_imp#projectName#revision versionNum#build successful,:build failed,#cost buildtime.#</SlackContent>
-    <SlackResult>true</SlackResult>
-    <SlackUpdate>true</SlackUpdate>
-    <SlackCommit>true</SlackCommit>
-    <GitVersion>3d16f83eacfd8d715b213fbf26bffc73f8e7445a</GitVersion>
-    <ProjectType>git</ProjectType>
-  </Projects>
-  <Projects Name="ServerMonitor" Status="true">
-    <RepositoryPath>http://gitlab.henu.edu.cn/android/ServerMonitor.git</RepositoryPath>
-    <WorkingDirectory>C:\LuckyCI\ConfigProjects\ServerMonitor</WorkingDirectory>
-    <MailTo>svn-notify@it.henu.edu.cn</MailTo>
-    <BuildCommand>gradlew :servermonitor:clean :servermonitor: assembleDebug :servermonitorplus:clean :servermonitorplus: assembleDebug</BuildCommand>
-    <IfSlack>true</IfSlack>
-    <IfMail>true</IfMail>
-    <SlackUrl>https://hooks.slack.com/services/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</SlackUrl>
-    <SlackChannel>#servermonitor</SlackChannel>
-    <MailHost>exch.henu.edu.cn</MailHost>
-    <UserName>#author#@it.henu.edu.cn</UserName>
-    <Password></Password>
-    <SlackUser>#author#</SlackUser>
-    <SlackContent>#smile:smiling_imp#projectName#revision versionNum#build successful,:build failed,#cost buildtime.#</SlackContent>
-    <SlackResult>true</SlackResult>
-    <SlackUpdate>true</SlackUpdate>
-    <SlackCommit>true</SlackCommit>
-    <GitVersion>3d16f83eacfd8d715b213fbf26bffc73f8e7445a</GitVersion>
-    <ProjectType>git</ProjectType>
-  </Projects>
-  <Projects Name="fundbook.rn" Status="true">
-    <RepositoryPath>http://gitlab.henu.edu.cn/FundBook/fundbook.rn.git</RepositoryPath>
-    <WorkingDirectory>C:\LuckyCI\ConfigProjects\fundbook.rn</WorkingDirectory>
-    <MailTo>svn-notify@it.henu.edu.cn</MailTo>
-    <BuildCommand>gradlew assembleDebug</BuildCommand>
-    <IfSlack>true</IfSlack>
-    <IfMail>true</IfMail>
-    <SlackUrl>https://hooks.slack.com/services/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</SlackUrl>
-    <SlackChannel>#fundapp</SlackChannel>
+    <SlackUrl></SlackUrl>
+    <SlackChannel>#web-firstproject</SlackChannel>
     <MailHost>exch.henu.edu.cn</MailHost>
     <UserName>#author#@it.henu.edu.cn</UserName>
     <Password></Password>
